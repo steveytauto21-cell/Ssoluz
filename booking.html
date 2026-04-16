@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Session | Ssoluz Cafe & Studio – Taytay, Rizal</title>
+  <meta name="description" content="Reserve your studio session, event space, or shooting rental at Ssoluz Cafe & Studio in Taytay, Rizal. Open 8AM–12AM daily." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" defer />
+  <script src="https://cdn.tailwindcss.com" defer></script>
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, .syne { font-family: 'Syne', sans-serif; }
+    body { background-color: #1a1a1b; color: #f4f4f4; overflow-x: hidden; }
+
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -3px;
+      width: 0; height: 1px;
+      background: #d4af37;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    .gold-line { width: 48px; height: 2px; background: linear-gradient(90deg, #d4af37, transparent); }
+
+    /* FORM */
+    .form-field {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #f4f4f4;
+      transition: all 0.3s ease;
+      outline: none;
+      width: 100%;
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+    }
+    .form-field:focus {
+      border-color: rgba(212,175,55,0.5);
+      background: rgba(212,175,55,0.04);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.08);
+    }
+    .form-field::placeholder { color: rgba(128,133,136,0.7); }
+    select.form-field option { background: #1a1a1b; color: #f4f4f4; }
+    textarea.form-field { resize: vertical; min-height: 120px; }
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #808588;
+      margin-bottom: 8px;
+      font-family: 'Syne', sans-serif;
+    }
+
+    /* TYPE CARDS */
+    .type-card {
+      cursor: pointer;
+      border: 2px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.02);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .type-card:hover {
+      border-color: rgba(212,175,55,0.3);
+      background: rgba(212,175,55,0.04);
+    }
+    .type-card.selected {
+      border-color: #d4af37;
+      background: rgba(212,175,55,0.08);
+    }
+    .type-card.selected .type-check {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .type-check {
+      position: absolute;
+      top: 12px; right: 12px;
+      width: 22px; height: 22px;
+      background: #d4af37;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.3s ease;
+    }
+
+    /* SUBMIT BUTTON */
+    .btn-submit {
+      background: linear-gradient(135deg, #d4af37, #b8962e);
+      color: #1a1a1b;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      width: 100%;
+      padding: 18px;
+      border-radius: 14px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(212,175,55,0.4);
+    }
+    .btn-submit:active { transform: translateY(0); }
+
+    /* POLICY CARD */
+    .policy-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+    .policy-card:hover {
+      border-color: rgba(212,175,55,0.15);
+      background: rgba(212,175,55,0.02);
+    }
+
+    /* INFO CARD */
+    .info-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 28px;
+    }
+
+    .fab-messenger {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 9999;
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, #d4af37, #b8962e);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(212,175,55,0.35);
+      transition: all 0.3s ease;
+    }
+    .fab-messenger:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(212,175,55,0.5); }
+
+    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(128,133,136,0.2), transparent); }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #d4af37, #b8962e);
+      color: #1a1a1b;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(212,175,55,0.4); }
+
+    /* SUCCESS TOAST */
+    #toast {
+      position: fixed;
+      bottom: 100px; right: 28px;
+      z-index: 99999;
+      background: #1a1a1b;
+      border: 1px solid rgba(212,175,55,0.4);
+      border-radius: 16px;
+      padding: 16px 20px;
+      display: flex; align-items: center; gap-12px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s ease;
+      min-width: 280px;
+      max-width: 340px;
+    }
+    #toast.show { transform: translateY(0); opacity: 1; }
+
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.5) sepia(1) saturate(5) hue-rotate(0deg);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV (identical across all pages) -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#1a1a1b]/90 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-16">
+      <a href="index.html" class="syne text-[#f4f4f4] font-bold text-xl tracking-wider">
+        SSOLUZ<span style="color:#d4af37">.</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="nav-link text-sm text-[#808588] hover:text-[#f4f4f4] tracking-wide transition-colors duration-300">Home</a>
+        <a href="menu.html" class="nav-link text-sm text-[#808588] hover:text-[#f4f4f4] tracking-wide transition-colors duration-300">Menu</a>
+        <a href="booking.html" class="nav-link text-sm text-[#f4f4f4] font-medium tracking-wide">Book</a>
+        <a href="booking.html" class="btn-gold px-5 py-2 rounded-full text-sm">Reserve Now</a>
+      </div>
+      <button id="hamburger" class="md:hidden text-[#f4f4f4] w-10 h-10 flex flex-col items-center justify-center gap-[5px]" aria-label="Open menu">
+        <span class="block w-6 h-[1.5px] bg-[#f4f4f4]"></span>
+        <span class="block w-6 h-[1.5px] bg-[#f4f4f4]"></span>
+        <span class="block w-4 h-[1.5px] bg-[#d4af37]"></span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-[#1a1a1b] border-t border-white/5 px-6 pb-6 pt-4 flex flex-col gap-4">
+      <a href="index.html" class="text-[#808588] hover:text-[#f4f4f4] transition-colors duration-300 font-medium tracking-wide">Home</a>
+      <a href="menu.html" class="text-[#808588] hover:text-[#f4f4f4] transition-colors duration-300 font-medium tracking-wide">Menu</a>
+      <a href="booking.html" class="text-[#d4af37] font-medium syne tracking-wide">Book</a>
+      <a href="booking.html" class="btn-gold px-5 py-2 rounded-full text-sm text-center">Reserve Now</a>
+    </div>
+  </nav>
+
+  <main>
+  <!-- ══════════════════════════════════════
+       BOOKING HERO
+  ══════════════════════════════════════ -->
+  <section class="pt-32 pb-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#d4af37]/05 to-transparent pointer-events-none"></div>
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4af37]/30 to-transparent"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+      <div class="max-w-2xl">
+        <p class="text-[#d4af37] text-xs font-semibold tracking-[0.3em] uppercase mb-4">Reservations</p>
+        <div class="gold-line mb-6"></div>
+        <h1 class="syne text-5xl lg:text-6xl font-black text-[#f4f4f4] leading-tight mb-5">
+          Reserve your<br/>
+          <span style="color:#d4af37">creative space.</span>
+        </h1>
+        <p class="text-[#808588] text-lg leading-relaxed max-w-xl">
+          Whether you're planning a self-shoot session, an intimate event, or a brand shoot — Ssoluz has the perfect space and the perfect team to make it happen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       BOOKING TYPES
+  ══════════════════════════════════════ -->
+  <section class="pb-8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid sm:grid-cols-3 gap-4 mb-6">
+        <div class="type-card selected p-6" data-value="Studio / Self-Shoot Rental" onclick="selectType(this)">
+          <div class="type-check"><i class="fa-solid fa-check text-[#1a1a1b] text-xs"></i></div>
+          <div class="text-3xl mb-3">📸</div>
+          <p class="syne font-bold text-[#f4f4f4] mb-1">Studio Rental</p>
+          <p class="text-[#808588] text-xs leading-relaxed">Self-shoot photography & content creation sessions</p>
+        </div>
+        <div class="type-card p-6" data-value="Event Reservation" onclick="selectType(this)">
+          <div class="type-check"><i class="fa-solid fa-check text-[#1a1a1b] text-xs"></i></div>
+          <div class="text-3xl mb-3">🎉</div>
+          <p class="syne font-bold text-[#f4f4f4] mb-1">Event Reservation</p>
+          <p class="text-[#808588] text-xs leading-relaxed">Birthdays, team gatherings, intimate celebrations</p>
+        </div>
+        <div class="type-card p-6" data-value="Brand / Commercial Shoot" onclick="selectType(this)">
+          <div class="type-check"><i class="fa-solid fa-check text-[#1a1a1b] text-xs"></i></div>
+          <div class="text-3xl mb-3">🎬</div>
+          <p class="syne font-bold text-[#f4f4f4] mb-1">Brand Shoot</p>
+          <p class="text-[#808588] text-xs leading-relaxed">Commercial photography, video productions, campaigns</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       MAIN LAYOUT: FORM + SIDEBAR
+  ══════════════════════════════════════ -->
+  <section class="pb-28 lg:pb-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-[1.4fr_1fr] gap-10 items-start">
+
+        <!-- ─── LEFT: FORM ─── -->
+        <div class="bg-[#1f1f20] border border-white/5 rounded-3xl p-8 lg:p-10">
+          <h2 class="syne text-2xl font-bold text-[#f4f4f4] mb-2">Reservation Details</h2>
+          <p class="text-[#808588] text-sm mb-8">Fill in the form below and we'll confirm your booking within 24 hours.</p>
+
+          <div class="flex flex-col gap-7">
+
+            <!-- Row: Name & Phone -->
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="fname">Full Name *</label>
+                <input type="text" id="fname" class="form-field" placeholder="Juan dela Cruz" required />
+              </div>
+              <div>
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" class="form-field" placeholder="09XX XXX XXXX" required />
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email">Email Address</label>
+              <input type="email" id="email" class="form-field" placeholder="juan@email.com" />
+            </div>
+
+            <!-- Hidden booking type -->
+            <input type="hidden" id="booking-type" value="Studio / Self-Shoot Rental" />
+
+            <!-- Booking Type Display (read-only, driven by cards above) -->
+            <div>
+              <label>Booking Type *</label>
+              <div id="booking-type-display" class="form-field flex items-center justify-between cursor-default" style="color:#d4af37; border-color: rgba(212,175,55,0.3); background: rgba(212,175,55,0.04);">
+                <span id="type-label-display">Studio / Self-Shoot Rental</span>
+                <i class="fa-solid fa-check-circle text-[#d4af37]"></i>
+              </div>
+            </div>
+
+            <!-- Row: Date & Time -->
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="date">Preferred Date *</label>
+                <input type="date" id="date" class="form-field" required />
+              </div>
+              <div>
+                <label for="time">Preferred Time *</label>
+                <input type="time" id="time" class="form-field" min="08:00" max="23:30" required />
+              </div>
+            </div>
+
+            <!-- Duration -->
+            <div>
+              <label for="duration">Session Duration</label>
+              <select id="duration" class="form-field">
+                <option value="1 hour">1 Hour</option>
+                <option value="2 hours" selected>2 Hours</option>
+                <option value="3 hours">3 Hours</option>
+                <option value="4 hours">4 Hours</option>
+                <option value="Half Day (5–6 hours)">Half Day (5–6 hours)</option>
+                <option value="Full Day (7+ hours)">Full Day (7+ hours)</option>
+                <option value="To be discussed">To be discussed</option>
+              </select>
+            </div>
+
+            <!-- Number of Guests -->
+            <div>
+              <label for="guests">Number of Guests / People</label>
+              <select id="guests" class="form-field">
+                <option value="Solo (1 person)">Solo (1 person)</option>
+                <option value="2–3 people">2–3 people</option>
+                <option value="4–6 people" selected>4–6 people</option>
+                <option value="7–10 people">7–10 people</option>
+                <option value="11–20 people">11–20 people</option>
+                <option value="20+ people (inquire first)">20+ people (inquire first)</option>
+              </select>
+            </div>
+
+            <!-- Special Requirements -->
+            <div>
+              <label for="requirements">Special Requirements / Notes</label>
+              <textarea id="requirements" class="form-field" placeholder="Tell us about your vision, equipment needs, props, backdrop preferences, theme, or any special requests..."></textarea>
+            </div>
+
+            <!-- How did you hear -->
+            <div>
+              <label for="source">How did you hear about us?</label>
+              <select id="source" class="form-field">
+                <option value="Facebook">Facebook</option>
+                <option value="Instagram">Instagram</option>
+                <option value="TikTok">TikTok</option>
+                <option value="Friend / Word of Mouth">Friend / Word of Mouth</option>
+                <option value="Google Search">Google Search</option>
+                <option value="Walk-in / Passerby">Walk-in / Passerby</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <!-- Submit -->
+            <div class="pt-2">
+              <button type="button" class="btn-submit" onclick="submitBooking()">
+                <i class="fa-solid fa-paper-plane mr-2"></i>
+                Send Reservation Request
+              </button>
+              <p class="text-[#808588] text-xs text-center mt-4 leading-relaxed">
+                Your inquiry will be sent directly to <strong class="text-[#d4af37]">ssoluzstudio@gmail.com</strong>.<br/>
+                We'll confirm your booking within 24 hours. Open 8AM – 12AM daily.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── RIGHT: SIDEBAR INFO ─── -->
+        <div class="flex flex-col gap-5 sticky top-24">
+
+          <!-- Operating Hours -->
+          <div class="info-card">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl bg-[#d4af37]/10 flex items-center justify-center">
+                <i class="fa-regular fa-clock text-[#d4af37]"></i>
+              </div>
+              <p class="syne font-bold text-[#f4f4f4]">Operating Hours</p>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between items-center py-2 border-b border-white/5">
+                <span class="text-[#808588] text-sm">Monday – Sunday</span>
+                <span class="text-[#d4af37] font-semibold text-sm syne">8AM – 12AM</span>
+              </div>
+              <p class="text-[#808588] text-xs pt-2">Open all holidays. Last booking accepted at 11:00 PM.</p>
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="info-card">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl bg-[#d4af37]/10 flex items-center justify-center">
+                <i class="fa-solid fa-location-dot text-[#d4af37]"></i>
+              </div>
+              <p class="syne font-bold text-[#f4f4f4]">Find Us</p>
+            </div>
+            <p class="text-[#808588] text-sm leading-relaxed mb-4">42 Rizal Ave, Taytay, 1920 Rizal</p>
+            <div class="flex flex-col gap-3">
+              <a href="tel:+639175770428" class="flex items-center gap-3 text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">
+                <i class="fa-solid fa-phone text-[#d4af37] text-xs w-4"></i>
+                0917 577 0428
+              </a>
+              <a href="mailto:ssoluzstudio@gmail.com" class="flex items-center gap-3 text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300 break-all">
+                <i class="fa-solid fa-envelope text-[#d4af37] text-xs w-4"></i>
+                ssoluzstudio@gmail.com
+              </a>
+              <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" class="flex items-center gap-3 text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">
+                <i class="fa-brands fa-facebook-messenger text-[#d4af37] text-xs w-4"></i>
+                Message on Messenger
+              </a>
+            </div>
+          </div>
+
+          <!-- Policies -->
+          <div class="info-card">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl bg-[#d4af37]/10 flex items-center justify-center">
+                <i class="fa-solid fa-shield-halved text-[#d4af37]"></i>
+              </div>
+              <p class="syne font-bold text-[#f4f4f4]">Studio Policies</p>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-check text-[#d4af37] text-xs mt-1 flex-shrink-0"></i>
+                <p class="text-[#808588] text-xs leading-relaxed">Booking confirmations sent within 24 hours of submission.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-check text-[#d4af37] text-xs mt-1 flex-shrink-0"></i>
+                <p class="text-[#808588] text-xs leading-relaxed">Pets welcome — diapers required inside the studio.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-check text-[#d4af37] text-xs mt-1 flex-shrink-0"></i>
+                <p class="text-[#808588] text-xs leading-relaxed">CCTV-secured, ample parking available on-site.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-check text-[#d4af37] text-xs mt-1 flex-shrink-0"></i>
+                <p class="text-[#808588] text-xs leading-relaxed">Full wheelchair accessibility throughout the space.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-check text-[#d4af37] text-xs mt-1 flex-shrink-0"></i>
+                <p class="text-[#808588] text-xs leading-relaxed">For large events (20+ pax), please message us directly first.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-check text-[#d4af37] text-xs mt-1 flex-shrink-0"></i>
+                <p class="text-[#808588] text-xs leading-relaxed">Cancellations must be communicated at least 24 hours before the session.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Socials quick -->
+          <div class="info-card">
+            <p class="syne font-bold text-[#f4f4f4] text-sm mb-4">Follow &amp; Stay Updated</p>
+            <div class="flex gap-3">
+              <a href="https://www.facebook.com/ssoluz.cafeandstudio" target="_blank" rel="noopener" aria-label="Facebook" class="flex-1 py-2.5 rounded-xl bg-white/5 hover:bg-[#d4af37]/10 border border-white/5 hover:border-[#d4af37]/20 flex items-center justify-center gap-2 transition-all duration-300">
+                <i class="fa-brands fa-facebook-f text-[#808588] text-xs"></i>
+                <span class="text-[#808588] text-xs">FB</span>
+              </a>
+              <a href="https://www.instagram.com/ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="Instagram" class="flex-1 py-2.5 rounded-xl bg-white/5 hover:bg-[#d4af37]/10 border border-white/5 hover:border-[#d4af37]/20 flex items-center justify-center gap-2 transition-all duration-300">
+                <i class="fa-brands fa-instagram text-[#808588] text-xs"></i>
+                <span class="text-[#808588] text-xs">IG</span>
+              </a>
+              <a href="https://www.tiktok.com/@ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="TikTok" class="flex-1 py-2.5 rounded-xl bg-white/5 hover:bg-[#d4af37]/10 border border-white/5 hover:border-[#d4af37]/20 flex items-center justify-center gap-2 transition-all duration-300">
+                <i class="fa-brands fa-tiktok text-[#808588] text-xs"></i>
+                <span class="text-[#808588] text-xs">TikTok</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#111112] border-t border-white/5 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div class="lg:col-span-2">
+          <p class="syne text-2xl font-black text-[#f4f4f4] mb-3">SSOLUZ<span style="color:#d4af37">.</span></p>
+          <p class="text-[#808588] text-sm leading-relaxed max-w-xs mb-6">
+            Rizal's first ever self-shoot studio. A space for coffee, creativity, and authentic self-expression.
+          </p>
+          <div class="flex gap-4">
+            <a href="https://www.facebook.com/ssoluz.cafeandstudio" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#d4af37]/20 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+              <i class="fa-brands fa-facebook-f text-[#808588] text-sm"></i>
+            </a>
+            <a href="https://www.instagram.com/ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#d4af37]/20 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+              <i class="fa-brands fa-instagram text-[#808588] text-sm"></i>
+            </a>
+            <a href="https://www.tiktok.com/@ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="TikTok" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#d4af37]/20 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+              <i class="fa-brands fa-tiktok text-[#808588] text-sm"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <p class="syne text-xs font-bold text-[#f4f4f4] tracking-widest uppercase mb-5">Quick Links</p>
+          <div class="flex flex-col gap-3">
+            <a href="index.html" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">Home</a>
+            <a href="menu.html" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">Menu</a>
+            <a href="booking.html" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">Book a Session</a>
+            <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">Message Us</a>
+          </div>
+        </div>
+        <div>
+          <p class="syne text-xs font-bold text-[#f4f4f4] tracking-widest uppercase mb-5">Contact</p>
+          <div class="flex flex-col gap-3">
+            <div>
+              <p class="text-[#d4af37] text-xs font-semibold uppercase tracking-wider mb-1">Hours</p>
+              <p class="text-[#808588] text-sm">8:00 AM – 12:00 AM</p>
+              <p class="text-[#808588] text-xs">Open Daily</p>
+            </div>
+            <a href="tel:+639175770428" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">0917 577 0428</a>
+            <a href="mailto:ssoluzstudio@gmail.com" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300 break-all">ssoluzstudio@gmail.com</a>
+            <p class="text-[#808588] text-sm leading-relaxed">42 Rizal Ave, Taytay,<br/>1920 Rizal</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-3">
+        <p class="text-[#808588] text-xs">© 2025 Ssoluz Cafe & Studio. All rights reserved.</p>
+        <p class="text-[#808588] text-xs">Built with <span class="text-[#d4af37]">♥</span> by Steven Designs</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FAB -->
+  <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" class="fab-messenger" aria-label="Message us on Messenger">
+    <i class="fa-brands fa-facebook-messenger text-[#1a1a1b] text-xl"></i>
+  </a>
+
+  <!-- TOAST -->
+  <div id="toast">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full bg-[#d4af37]/20 flex items-center justify-center flex-shrink-0">
+        <i class="fa-solid fa-check text-[#d4af37] text-xs"></i>
+      </div>
+      <div>
+        <p class="text-[#f4f4f4] text-sm font-semibold syne">Reservation Sent!</p>
+        <p class="text-[#808588] text-xs">Check your email app to complete sending.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Type card selection
+    function selectType(card) {
+      document.querySelectorAll('.type-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      const val = card.dataset.value;
+      document.getElementById('booking-type').value = val;
+      document.getElementById('type-label-display').textContent = val;
+    }
+
+    // Submit → mailto with pre-filled body
+    function submitBooking() {
+      const name = document.getElementById('fname').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const bookingType = document.getElementById('booking-type').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+      const duration = document.getElementById('duration').value;
+      const guests = document.getElementById('guests').value;
+      const requirements = document.getElementById('requirements').value.trim();
+      const source = document.getElementById('source').value;
+
+      if (!name || !phone || !date || !time) {
+        alert('Please fill in all required fields: Name, Phone, Date, and Time.');
+        return;
+      }
+
+      const formatTime = (t) => {
+        if (!t) return 'Not specified';
+        const [h, m] = t.split(':');
+        const hour = parseInt(h);
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        const hour12 = hour % 12 || 12;
+        return `${hour12}:${m} ${ampm}`;
+      };
+
+      const formatDate = (d) => {
+        if (!d) return 'Not specified';
+        const dt = new Date(d + 'T00:00:00');
+        return dt.toLocaleDateString('en-PH', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      };
+
+      const subject = encodeURIComponent(`Studio/Event Reservation Request - ${name}`);
+
+      const body = encodeURIComponent(
+`Hello Ssoluz Cafe & Studio Team,
+
+I would like to submit a reservation request. Please find my details below:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BOOKING INFORMATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Full Name:        ${name}
+Phone Number:     ${phone}
+Email Address:    ${email || 'Not provided'}
+
+Booking Type:     ${bookingType}
+Preferred Date:   ${formatDate(date)}
+Preferred Time:   ${formatTime(time)}
+Session Duration: ${duration}
+Number of Guests: ${guests}
+
+Special Requirements / Notes:
+${requirements || 'None specified.'}
+
+How I heard about Ssoluz:
+${source}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+I look forward to your confirmation. Thank you!
+
+Best regards,
+${name}
+${phone}`
+      );
+
+      window.location.href = `mailto:ssoluzstudio@gmail.com?subject=${subject}&body=${body}`;
+
+      // Show toast
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 5000);
+    }
+
+    // Set min date to today
+    const dateInput = document.getElementById('date');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+  </script>
+</body>
+</html>
