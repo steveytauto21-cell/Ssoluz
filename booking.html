@@ -22,6 +22,7 @@
             gold: '#d4af37',
             'gold-light': '#e8c84a',
             'gold-dim': '#a8891f',
+            messenger: '#00B2FF'
           },
           fontFamily: {
             syne: ['Syne', 'sans-serif'],
@@ -66,7 +67,6 @@
     .mobile-menu-panel { transition: all 0.35s cubic-bezier(0.16,1,0.3,1); }
     .required-star { color: #d4af37; }
     label { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,244,244,0.6); display: block; margin-bottom: 8px; }
-    /* FIX: Ensure modal inner content is always clickable */
     .modal-box a, .modal-box button { position: relative; z-index: 10; pointer-events: auto; cursor: pointer; }
   </style>
 </head>
@@ -114,7 +114,7 @@
             Claim Your<br/><span class="text-gold">Space.</span>
           </h1>
           <p class="font-inter text-studio/50 text-base lg:text-lg max-w-lg">
-            Fill out the form below and we'll confirm your reservation. For urgent bookings, reach us directly on Messenger.
+            Fill out the form below and we'll format your request. You can then quickly send it directly to our Messenger.
           </p>
         </div>
       </div>
@@ -142,7 +142,6 @@
               <div class="mb-8">
                 <label>Booking Type <span class="required-star">*</span></label>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2" id="type-selector">
-
                   <div class="type-card rounded-2xl p-5 selected" onclick="selectType('self-shoot', this)">
                     <div class="type-icon w-11 h-11 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center mb-4 text-studio/50 transition-all duration-300">
                       <i class="fas fa-camera text-lg"></i>
@@ -150,7 +149,6 @@
                     <p class="type-title font-syne font-700 text-studio text-sm transition-colors duration-300">Self-Shoot<br/>Studio</p>
                     <p class="font-inter text-studio/35 text-xs mt-1 leading-relaxed">Solo or group photo sessions</p>
                   </div>
-
                   <div class="type-card rounded-2xl p-5" onclick="selectType('event', this)">
                     <div class="type-icon w-11 h-11 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center mb-4 text-studio/50 transition-all duration-300">
                       <i class="fas fa-star text-lg"></i>
@@ -158,7 +156,6 @@
                     <p class="type-title font-syne font-700 text-studio text-sm transition-colors duration-300">Private<br/>Event</p>
                     <p class="font-inter text-studio/35 text-xs mt-1 leading-relaxed">Birthdays, launches & more</p>
                   </div>
-
                   <div class="type-card rounded-2xl p-5" onclick="selectType('meeting', this)">
                     <div class="type-icon w-11 h-11 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center mb-4 text-studio/50 transition-all duration-300">
                       <i class="fas fa-briefcase text-lg"></i>
@@ -166,7 +163,6 @@
                     <p class="type-title font-syne font-700 text-studio text-sm transition-colors duration-300">Meeting /<br/>Work Session</p>
                     <p class="font-inter text-studio/35 text-xs mt-1 leading-relaxed">Team meetings & brainstorms</p>
                   </div>
-
                 </div>
                 <input type="hidden" id="booking-type-value" value="Self-Shoot Studio" />
               </div>
@@ -231,12 +227,12 @@
 
               <!-- SUBMIT -->
               <button id="submit-btn" onclick="submitBooking()" class="submit-btn w-full font-syne font-700 tracking-widest uppercase text-sm py-5 rounded-xl min-h-[56px] flex items-center justify-center gap-3">
-                <i class="fas fa-paper-plane"></i>
-                <span id="btn-label">Submit Reservation Request</span>
+                <i class="fab fa-facebook-messenger text-lg"></i>
+                <span id="btn-label">Draft Request to Messenger</span>
               </button>
 
               <p class="font-inter text-studio/30 text-xs text-center mt-4 leading-relaxed">
-                Clicking submit will open your email client with a pre-filled reservation request to <span class="text-gold/60">ssoluzstudio@gmail.com</span>.
+                Clicking submit will securely copy your details and prompt you to open Facebook Messenger.
               </p>
             </div>
           </div>
@@ -332,52 +328,33 @@
               </div>
             </div>
 
-            <!-- Social Follow -->
-            <div class="info-card rounded-2xl p-7">
-              <h3 class="font-syne font-700 text-studio text-sm mb-4">Follow for Updates</h3>
-              <div class="flex items-center gap-3">
-                <a href="https://www.facebook.com/ssoluz.cafeandstudio" target="_blank" rel="noopener" aria-label="Facebook" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.instagram.com/ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="Instagram" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
-                  <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.tiktok.com/@ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="TikTok" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
-                  <i class="fab fa-tiktok"></i>
-                </a>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ═══════════════ SUCCESS MODAL ═══════════════ -->
-  <!--
-    FIX: Changed modal structure so the backdrop click-to-close does NOT
-    intercept clicks on links/buttons inside the modal box.
-    - Backdrop is a separate absolute div that handles closing
-    - modal-box sits on top with its own z-index, fully interactive
-  -->
+  <!-- ═══════════════ SUCCESS MODAL (MESSENGER VERSION) ═══════════════ -->
   <div id="success-modal" class="success-modal fixed inset-0 z-[999] items-center justify-center px-6" style="background: rgba(26,26,27,0.85);">
-    <!-- Backdrop: clicking this closes the modal -->
     <div id="modal-backdrop" onclick="closeModal()" class="absolute inset-0" style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
-    <!-- Modal box: sits above backdrop, fully interactive -->
-    <div class="modal-box relative z-10 max-w-md w-full bg-noir-light border border-gold/30 rounded-3xl p-10 text-center" style="box-shadow: 0 0 60px rgba(212,175,55,0.25);">
-      <div class="w-20 h-20 rounded-2xl bg-gold flex items-center justify-center mx-auto mb-6">
-        <i class="fas fa-check text-noir text-3xl"></i>
+    
+    <div class="modal-box relative z-10 max-w-md w-full bg-noir-light border border-messenger/30 rounded-3xl p-8 lg:p-10 text-center" style="box-shadow: 0 0 60px rgba(0,178,255,0.15);">
+      <div class="w-20 h-20 rounded-2xl bg-messenger/10 flex items-center justify-center mx-auto mb-6 border border-messenger/30">
+        <i class="fab fa-facebook-messenger text-messenger text-4xl"></i>
       </div>
-      <h3 class="font-syne font-800 text-studio text-2xl mb-3">Email Client Opened!</h3>
-      <p class="font-inter text-studio/55 text-sm leading-relaxed mb-2">Your reservation request has been pre-filled. Please send the email to complete your booking.</p>
-      <p class="font-inter text-gold/70 text-xs mb-8">
-        If your email client didn't open, email us directly at
-        <a href="mailto:ssoluzstudio@gmail.com" class="underline hover:text-gold text-gold font-semibold" style="pointer-events: auto; cursor: pointer; position: relative; z-index: 20;">ssoluzstudio@gmail.com</a>
+      <h3 class="font-syne font-800 text-studio text-2xl mb-3">Ready for Messenger!</h3>
+      <p class="font-inter text-studio/60 text-sm leading-relaxed mb-6">
+        Your reservation details have been <strong>copied to your clipboard</strong>. Click below to open our Messenger, then simply <strong class="text-white">"Paste"</strong> the message to send it to us!
       </p>
-      <button onclick="closeModal()" class="w-full border border-gold text-gold font-syne tracking-widest uppercase text-sm py-4 rounded-xl hover:bg-gold hover:text-noir transition-all duration-300 min-h-[52px]" style="cursor: pointer;">
-        Close
-      </button>
+      
+      <div class="flex gap-3">
+        <button onclick="closeModal()" class="w-1/3 border border-white/10 text-studio/60 font-syne tracking-widest uppercase text-xs py-4 rounded-xl hover:bg-white/5 transition-all duration-300">
+          Cancel
+        </button>
+        <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" onclick="closeModal()" class="w-2/3 bg-messenger text-white font-syne font-700 tracking-widest uppercase text-xs flex items-center justify-center gap-2 rounded-xl hover:bg-[#0099e6] transition-all duration-300 shadow-[0_0_20px_rgba(0,178,255,0.3)]">
+          Open Messenger <i class="fas fa-external-link-alt text-[10px]"></i>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -400,16 +377,16 @@
         <div>
           <h4 class="font-syne font-700 text-studio text-sm tracking-widest uppercase mb-6">Connect</h4>
           <div class="flex items-center gap-4 mb-6">
-            <a href="https://www.facebook.com/ssoluz.cafeandstudio" target="_blank" rel="noopener" aria-label="Facebook" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
+            <a href="https://www.facebook.com/ssoluz.cafeandstudio" target="_blank" rel="noopener" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="https://www.instagram.com/ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="Instagram" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
+            <a href="https://www.instagram.com/ssoluzcafeandstudio" target="_blank" rel="noopener" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://www.tiktok.com/@ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="TikTok" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
+            <a href="https://www.tiktok.com/@ssoluzcafeandstudio" target="_blank" rel="noopener" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
               <i class="fab fa-tiktok"></i>
             </a>
-            <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" aria-label="Messenger" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
+            <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
               <i class="fab fa-facebook-messenger"></i>
             </a>
           </div>
@@ -428,11 +405,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- FAB -->
-  <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" aria-label="Message us on Messenger" class="fab fixed bottom-7 right-7 z-50 w-16 h-16 rounded-full bg-gold flex items-center justify-center" style="box-shadow: 0 0 20px rgba(212,175,55,0.4);">
-    <i class="fab fa-facebook-messenger text-noir text-2xl"></i>
-  </a>
 
   <script>
     // ── Mobile Menu ──
@@ -466,7 +438,7 @@
     const dd = String(today.getDate()).padStart(2, '0');
     dateInput.min = `${yyyy}-${mm}-${dd}`;
 
-    // ── Submit Booking ──
+    // ── Submit Booking via Clipboard -> Messenger ──
     function submitBooking() {
       const name = document.getElementById('guest-name').value.trim();
       const phone = document.getElementById('guest-phone').value.trim();
@@ -494,61 +466,29 @@
       const hour12 = hourNum > 12 ? hourNum - 12 : (hourNum === 0 ? 12 : hourNum);
       const formattedTime = `${hour12}:${min} ${ampm}`;
 
-      const subject = encodeURIComponent(`Reservation Request — ${type} | ${formattedDate}`);
-
-      const body = encodeURIComponent(
-`Hello Ssoluz Team,
-
-I would like to request a reservation. Here are my details:
-
-━━━━━━━━━━━━━━━━━━━━━━━━━
-RESERVATION DETAILS
-━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Name:          ${name}
-Phone:         ${phone}
-Booking Type:  ${type}
-Date:          ${formattedDate}
-Time:          ${formattedTime}
-Guests:        ${guests}
-Duration:      ${duration || 'To be discussed'}
-
-Special Requests / Notes:
-${notes || 'None'}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Please confirm my booking at your earliest convenience. Thank you!
-
-Best regards,
-${name}
-${phone}`
-      );
-
-      // FIX: Use window.open() with the mailto link instead of window.location.href
-      // This is more reliable across browsers and doesn't navigate away from the page
-      const mailtoLink = `mailto:ssoluzstudio@gmail.com?subject=${subject}&body=${body}`;
+      // Construct Draft Message for Messenger
+      const messageBody = `Hello Ssoluz Team,\n\nI would like to request a reservation. Here are my details:\n\n━━━━━━━━━━━━━━━━━━━━━━━━━\nRESERVATION DETAILS\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\nName:          ${name}\nPhone:         ${phone}\nBooking Type:  ${type}\nDate:          ${formattedDate}\nTime:          ${formattedTime}\nGuests:        ${guests}\nDuration:      ${duration || 'To be discussed'}\n\nSpecial Requests / Notes:\n${notes || 'None'}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\nPlease let me know if this slot is available. Thank you!`;
 
       // Loading state
       const btn = document.getElementById('submit-btn');
       const btnLabel = document.getElementById('btn-label');
       btn.disabled = true;
-      btnLabel.textContent = 'Opening email client...';
+      btnLabel.textContent = 'Formatting Request...';
 
-      // FIX: Use a hidden anchor click — most reliable cross-browser mailto trigger
-      const tempLink = document.createElement('a');
-      tempLink.href = mailtoLink;
-      tempLink.style.display = 'none';
-      document.body.appendChild(tempLink);
-      tempLink.click();
-      document.body.removeChild(tempLink);
-
-      // Show success modal after brief delay
-      setTimeout(() => {
+      // Copy text to clipboard and show modal
+      navigator.clipboard.writeText(messageBody).then(() => {
+        setTimeout(() => {
+          btn.disabled = false;
+          btnLabel.textContent = 'Draft Request to Messenger';
+          document.getElementById('success-modal').classList.add('show');
+        }, 500);
+      }).catch(err => {
+        // Fallback if clipboard fails (usually due to secure context rules)
+        alert('Could not copy to clipboard automatically. We will redirect you to Messenger, please type your request there.');
+        window.open('https://m.me/ssoluz.cafeandstudio', '_blank');
         btn.disabled = false;
-        btnLabel.textContent = 'Submit Reservation Request';
-        document.getElementById('success-modal').classList.add('show');
-      }, 800);
+        btnLabel.textContent = 'Draft Request to Messenger';
+      });
     }
 
     function highlightErrors(name, phone, date, time, guests) {
