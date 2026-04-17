@@ -3,740 +3,449 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Menu | Ssoluz Cafe & Studio – Taytay, Rizal</title>
-  <meta name="description" content="Explore the Ssoluz Cafe & Studio menu — crafted coffees, specialty drinks, hot meals, and the iconic Budbod ni Master. Mid-affordable luxury in Taytay, Rizal." />
+  <title>Menu — Ssoluz Cafe & Studio | Mid-Affordable Luxury</title>
+  <meta name="description" content="Explore the Ssoluz menu — coffee, drinks, and food in the ₱1–500 range. Mid-Affordable Luxury at Rizal's first self-shoot studio in Taytay." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" defer />
-  <script src="https://cdn.tailwindcss.com" defer></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            noir: '#1a1a1b',
+            'noir-light': '#242425',
+            'noir-mid': '#2e2e2f',
+            studio: '#f4f4f4',
+            gold: '#d4af37',
+            'gold-light': '#e8c84a',
+            'gold-dim': '#a8891f',
+          },
+          fontFamily: {
+            syne: ['Syne', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            gold: '0 0 20px rgba(212,175,55,0.4)',
+            'gold-lg': '0 0 40px rgba(212,175,55,0.5)',
+          },
+        },
+      },
+    }
+  </script>
   <style>
-    * { font-family: 'Inter', sans-serif; }
-    h1, h2, h3, h4, .syne { font-family: 'Syne', sans-serif; }
-    body { background-color: #1a1a1b; color: #f4f4f4; overflow-x: hidden; }
-
+    body { background-color: #1a1a1b; color: #f4f4f4; font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+    .gold-glow:hover { box-shadow: 0 0 40px rgba(212,175,55,0.6); }
+    .glass { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(26,26,27,0.75); border-bottom: 1px solid rgba(212,175,55,0.15); }
+    .hero-grid { background-image: linear-gradient(rgba(212,175,55,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.04) 1px, transparent 1px); background-size: 60px 60px; }
     .nav-link { position: relative; }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -3px;
-      width: 0; height: 1px;
-      background: #d4af37;
-      transition: width 0.3s ease;
-    }
+    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: #d4af37; transition: width 0.3s ease; }
     .nav-link:hover::after { width: 100%; }
-
-    .gold-line { width: 48px; height: 2px; background: linear-gradient(90deg, #d4af37, transparent); }
-
-    /* HERO */
-    .menu-hero {
-      background: linear-gradient(180deg, #1a1a1b 0%, #222224 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .menu-hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
-    }
-
-    /* CATEGORY TABS */
-    .cat-tab {
-      cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.07);
-      background: rgba(255,255,255,0.02);
-      transition: all 0.3s ease;
-      white-space: nowrap;
-    }
-    .cat-tab:hover, .cat-tab.active {
-      background: rgba(212,175,55,0.1);
-      border-color: rgba(212,175,55,0.35);
-      color: #d4af37;
-    }
-    .cat-tab.active { color: #d4af37 !important; }
-
-    /* MENU ITEM */
-    .menu-item {
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: all 0.3s ease;
-    }
-    .menu-item:last-child { border-bottom: none; }
-    .menu-item:hover {
-      background: rgba(212,175,55,0.03);
-      padding-left: 8px;
-      margin-left: -8px;
-      padding-right: 8px;
-      margin-right: -8px;
-    }
-
-    /* FEATURED CARD */
-    .featured-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.07);
-      transition: all 0.4s ease;
-    }
-    .featured-card:hover {
-      border-color: rgba(212,175,55,0.25);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      background: rgba(212,175,55,0.04);
-    }
-
-    /* BUDBOD SECTION */
-    .budbod-section {
-      background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.02));
-      border: 1px solid rgba(212,175,55,0.18);
-      position: relative;
-      overflow: hidden;
-    }
-    .budbod-section::before {
-      content: 'SIGNATURE';
-      position: absolute;
-      top: 24px; right: -20px;
-      background: #d4af37;
-      color: #1a1a1b;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      padding: 4px 32px;
-      transform: rotate(45deg) translateX(20px);
-    }
-
-    .menu-section { display: none; }
-    .menu-section.active { display: block; }
-
-    .price-tag {
-      color: #d4af37;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-    }
-
-    .fab-messenger {
-      position: fixed;
-      bottom: 28px; right: 28px;
-      z-index: 9999;
-      width: 56px; height: 56px;
-      background: linear-gradient(135deg, #d4af37, #b8962e);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 24px rgba(212,175,55,0.35);
-      transition: all 0.3s ease;
-    }
-    .fab-messenger:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(212,175,55,0.5); }
-
-    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(128,133,136,0.2), transparent); }
-
-    .btn-gold {
-      background: linear-gradient(135deg, #d4af37, #b8962e);
-      color: #1a1a1b;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      transition: all 0.3s ease;
-    }
-    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(212,175,55,0.4); }
-
-    .badge-new {
-      background: rgba(212,175,55,0.15);
-      border: 1px solid rgba(212,175,55,0.3);
-      color: #d4af37;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: 'Syne', sans-serif;
-    }
+    .menu-card { transition: all 0.4s cubic-bezier(0.16,1,0.3,1); border: 1px solid rgba(255,255,255,0.06); background: linear-gradient(145deg, #242425, #1e1e1f); }
+    .menu-card:hover { transform: translateY(-5px); border-color: rgba(212,175,55,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,175,55,0.15); }
+    .price-badge { background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.05)); border: 1px solid rgba(212,175,55,0.3); }
+    .separator-gold { background: linear-gradient(90deg, transparent, #d4af37, transparent); height: 1px; }
+    .fab { transition: all 0.3s ease; }
+    .fab:hover { transform: scale(1.12) rotate(-5deg); box-shadow: 0 0 40px rgba(212,175,55,0.7); }
+    .category-pill { transition: all 0.3s ease; }
+    .category-pill.active { background: #d4af37; color: #1a1a1b; border-color: #d4af37; }
+    .category-pill:not(.active):hover { border-color: rgba(212,175,55,0.5); color: #d4af37; }
+    .item-tag { font-size: 10px; letter-spacing: 0.12em; padding: 3px 8px; border-radius: 4px; }
+    .budbod-section { background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(26,26,27,0.95) 60%), repeating-linear-gradient(45deg, rgba(212,175,55,0.02) 0px, rgba(212,175,55,0.02) 1px, transparent 1px, transparent 10px); }
+    @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+    .shimmer-text { background: linear-gradient(90deg, #d4af37 25%, #f4e4a0 50%, #d4af37 75%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 3s linear infinite; }
+    .mobile-menu-panel { transition: all 0.35s cubic-bezier(0.16,1,0.3,1); }
   </style>
 </head>
-<body>
+<body class="overflow-x-hidden bg-noir">
 
-  <!-- NAV (identical across all pages) -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#1a1a1b]/90 backdrop-blur-md border-b border-white/5">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-16">
-      <a href="index.html" class="syne text-[#f4f4f4] font-bold text-xl tracking-wider">
-        SSOLUZ<span style="color:#d4af37">.</span>
+  <!-- ═══════════════ NAVBAR ═══════════════ -->
+  <nav class="glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+      <a href="index.html" aria-label="Ssoluz Home">
+        <img src="https://i.ibb.co/wFSkxGzb/272866390-107870021808169-3941744220203550073-n.jpg" alt="Ssoluz Logo" class="h-14 w-auto object-contain" />
       </a>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="index.html" class="nav-link text-sm text-[#808588] hover:text-[#f4f4f4] tracking-wide transition-colors duration-300">Home</a>
-        <a href="menu.html" class="nav-link text-sm text-[#f4f4f4] font-medium tracking-wide">Menu</a>
-        <a href="booking.html" class="nav-link text-sm text-[#808588] hover:text-[#f4f4f4] tracking-wide transition-colors duration-300">Book</a>
-        <a href="booking.html" class="btn-gold px-5 py-2 rounded-full text-sm">Reserve Now</a>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="index.html" class="nav-link font-syne text-studio/70 hover:text-studio tracking-widest uppercase text-sm transition-colors duration-300">Home</a>
+        <a href="menu.html" class="nav-link font-syne font-600 text-gold tracking-widest uppercase text-sm">Menu</a>
+        <a href="booking.html" class="nav-link font-syne text-studio/70 hover:text-studio tracking-widest uppercase text-sm transition-colors duration-300">Book</a>
+        <a href="booking.html" class="border border-gold text-gold font-syne text-sm tracking-widest uppercase px-6 py-2.5 hover:bg-gold hover:text-noir gold-glow transition-all duration-300 min-h-[44px] flex items-center">Reserve Now</a>
       </div>
-      <button id="hamburger" class="md:hidden text-[#f4f4f4] w-10 h-10 flex flex-col items-center justify-center gap-[5px]" aria-label="Open menu">
-        <span class="block w-6 h-[1.5px] bg-[#f4f4f4] transition-all duration-300" id="h1"></span>
-        <span class="block w-6 h-[1.5px] bg-[#f4f4f4] transition-all duration-300" id="h2"></span>
-        <span class="block w-4 h-[1.5px] bg-[#d4af37] transition-all duration-300" id="h3"></span>
+      <button id="menu-toggle" class="md:hidden text-gold text-2xl min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Toggle menu">
+        <i class="fas fa-bars" id="menu-icon"></i>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-[#1a1a1b] border-t border-white/5 px-6 pb-6 pt-4 flex flex-col gap-4">
-      <a href="index.html" class="text-[#808588] hover:text-[#f4f4f4] transition-colors duration-300 font-medium tracking-wide">Home</a>
-      <a href="menu.html" class="text-[#d4af37] font-medium syne tracking-wide">Menu</a>
-      <a href="booking.html" class="text-[#808588] hover:text-[#f4f4f4] transition-colors duration-300 font-medium tracking-wide">Book</a>
-      <a href="booking.html" class="btn-gold px-5 py-2 rounded-full text-sm text-center">Reserve Now</a>
+    <div id="mobile-menu" class="mobile-menu-panel max-h-0 overflow-hidden md:hidden">
+      <div class="flex flex-col gap-0 px-6 pb-6 pt-2 border-t border-gold/10">
+        <a href="index.html" class="font-syne text-studio/70 tracking-widest uppercase text-sm py-4 border-b border-white/5 hover:text-studio transition-colors">Home</a>
+        <a href="menu.html" class="font-syne text-gold tracking-widest uppercase text-sm py-4 border-b border-white/5">Menu</a>
+        <a href="booking.html" class="font-syne text-studio/70 tracking-widest uppercase text-sm py-4 hover:text-studio transition-colors">Book</a>
+        <a href="booking.html" class="mt-4 border border-gold text-gold font-syne text-sm tracking-widest uppercase px-6 py-3 text-center hover:bg-gold hover:text-noir transition-all duration-300">Reserve Now</a>
+      </div>
     </div>
   </nav>
 
   <main>
-  <!-- ══════════════════════════════════════
-       MENU HERO
-  ══════════════════════════════════════ -->
-  <section class="menu-hero pt-32 pb-20">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="max-w-2xl">
-        <p class="text-[#d4af37] text-xs font-semibold tracking-[0.3em] uppercase mb-4">The Menu</p>
-        <div class="gold-line mb-6"></div>
-        <h1 class="syne text-5xl lg:text-6xl font-black text-[#f4f4f4] leading-tight mb-4">
-          Crafted with care.<br/>
-          <span style="color:#d4af37">Priced for all.</span>
-        </h1>
-        <p class="text-[#808588] text-lg mb-2">Mid-Affordable Luxury &nbsp;·&nbsp; ₱1–500</p>
-        <p class="text-[#808588] text-sm">Quality you can taste. Prices you'll appreciate.</p>
+    <!-- ═══════════════ MENU HERO ═══════════════ -->
+    <section class="hero-grid relative pt-36 pb-20 overflow-hidden">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[200px] rounded-full blur-[120px] opacity-8 pointer-events-none" style="background: radial-gradient(circle, #d4af37, transparent 60%);"></div>
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+          <div>
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-8 h-px bg-gold"></div>
+              <span class="font-syne text-gold/80 tracking-[0.3em] uppercase text-xs">The Ssoluz Menu</span>
+            </div>
+            <h1 class="font-syne font-800 text-studio text-5xl sm:text-6xl lg:text-8xl leading-[0.92] mb-4">
+              Mid-Affordable<br/><span class="text-gold">Luxury.</span>
+            </h1>
+            <p class="font-inter text-studio/50 text-base lg:text-lg max-w-md">
+              Everything on our menu is crafted to give you a premium experience — without the premium price tag. <span class="text-gold/80 font-500">₱1 – ₱500 range.</span>
+            </p>
+          </div>
+          <div class="flex items-center gap-3 bg-noir-light border border-gold/20 rounded-2xl px-6 py-4 self-start lg:self-auto">
+            <i class="fas fa-tags text-gold text-xl"></i>
+            <div>
+              <p class="font-syne font-700 text-studio text-sm">Price Range</p>
+              <p class="font-inter text-gold text-lg font-600">₱1 – ₱500</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ══════════════════════════════════════
-       FEATURED ITEMS (Top 5 highlights)
-  ══════════════════════════════════════ -->
-  <section class="pb-20">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <p class="text-[#d4af37] text-xs font-semibold tracking-[0.3em] uppercase mb-8">Must-Try Picks</p>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
-        <!-- Coffee Float -->
-        <div class="featured-card rounded-2xl p-6">
-          <div class="text-4xl mb-4">🧊</div>
-          <div class="flex items-start justify-between mb-2">
-            <h3 class="syne text-lg font-bold text-[#f4f4f4]">Coffee Float</h3>
-            <span class="badge-new">BESTSELLER</span>
-          </div>
-          <p class="text-[#808588] text-sm leading-relaxed">Rich espresso poured over creamy vanilla ice cream — a dreamy combination that hits different every time.</p>
-          <p class="price-tag text-xl mt-4">₱150</p>
-        </div>
-
-        <!-- Iced Americano -->
-        <div class="featured-card rounded-2xl p-6">
-          <div class="text-4xl mb-4">☕</div>
-          <div class="flex items-start justify-between mb-2">
-            <h3 class="syne text-lg font-bold text-[#f4f4f4]">Iced Americano</h3>
-            <span class="badge-new">CLASSIC</span>
-          </div>
-          <p class="text-[#808588] text-sm leading-relaxed">Bold, clean, and unapologetically smooth. Double espresso shots over cold water and ice — the creator's fuel.</p>
-          <p class="price-tag text-xl mt-4">₱120</p>
-        </div>
-
-        <!-- Sparkling Peach Tea -->
-        <div class="featured-card rounded-2xl p-6">
-          <div class="text-4xl mb-4">🍑</div>
-          <div class="flex items-start justify-between mb-2">
-            <h3 class="syne text-lg font-bold text-[#f4f4f4]">Sparkling Iced Shaken Peach Tea</h3>
-            <span class="badge-new">FAN FAV</span>
-          </div>
-          <p class="text-[#808588] text-sm leading-relaxed">Effervescent peach-forward tea, hand-shaken, poured over ice. Light, refreshing, and endlessly instagrammable.</p>
-          <p class="price-tag text-xl mt-4">₱145</p>
-        </div>
-
-        <!-- Shrimp Aglio Olio -->
-        <div class="featured-card rounded-2xl p-6">
-          <div class="text-4xl mb-4">🍝</div>
-          <div class="flex items-start justify-between mb-2">
-            <h3 class="syne text-lg font-bold text-[#f4f4f4]">Shrimp Aglio Olio</h3>
-            <span class="badge-new">CHEF'S PICK</span>
-          </div>
-          <p class="text-[#808588] text-sm leading-relaxed">Al dente pasta tossed in golden garlic-infused olive oil with plump shrimp. Simple. Elevated. Satisfying.</p>
-          <p class="price-tag text-xl mt-4">₱280</p>
-        </div>
-
-        <!-- Studio Nachos -->
-        <div class="featured-card rounded-2xl p-6 sm:col-span-2 lg:col-span-1">
-          <div class="text-4xl mb-4">🧀</div>
-          <div class="flex items-start justify-between mb-2">
-            <h3 class="syne text-lg font-bold text-[#f4f4f4]">Studio Nachos</h3>
-            <span class="badge-new">CROWD FAVE</span>
-          </div>
-          <p class="text-[#808588] text-sm leading-relaxed">Crispy tortilla chips loaded with melted cheese, house salsa, and your choice of toppings. Perfect for sharing — or not.</p>
-          <p class="price-tag text-xl mt-4">₱220</p>
+    <!-- ═══════════════ FILTER PILLS ═══════════════ -->
+    <div class="sticky top-20 z-30 bg-noir/80 backdrop-blur-xl border-b border-white/6 py-4">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="flex items-center gap-3 overflow-x-auto pb-1 scrollbar-hide">
+          <button onclick="filterMenu('all', this)" class="category-pill active font-syne text-xs tracking-widest uppercase border border-gold px-5 py-2 rounded-full whitespace-nowrap min-h-[40px]">All Items</button>
+          <button onclick="filterMenu('coffee', this)" class="category-pill font-syne text-xs tracking-widest uppercase border border-white/15 text-studio/60 px-5 py-2 rounded-full whitespace-nowrap min-h-[40px]">☕ Coffee</button>
+          <button onclick="filterMenu('drinks', this)" class="category-pill font-syne text-xs tracking-widest uppercase border border-white/15 text-studio/60 px-5 py-2 rounded-full whitespace-nowrap min-h-[40px]">🥤 Drinks</button>
+          <button onclick="filterMenu('food', this)" class="category-pill font-syne text-xs tracking-widest uppercase border border-white/15 text-studio/60 px-5 py-2 rounded-full whitespace-nowrap min-h-[40px]">🍽️ Food</button>
         </div>
       </div>
     </div>
-  </section>
 
-  <div class="section-divider mx-10"></div>
+    <!-- ═══════════════ MENU ITEMS ═══════════════ -->
+    <section class="py-20 lg:py-28">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
 
-  <!-- ══════════════════════════════════════
-       FULL MENU — TABBED
-  ══════════════════════════════════════ -->
-  <section class="py-20 lg:py-28">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <p class="text-[#d4af37] text-xs font-semibold tracking-[0.3em] uppercase mb-8">Full Menu</p>
-
-      <!-- Tabs -->
-      <div class="flex gap-3 overflow-x-auto pb-4 mb-10 scrollbar-hide" id="tab-bar">
-        <button class="cat-tab active px-5 py-2.5 rounded-full text-sm text-[#f4f4f4] font-medium syne" data-target="coffee">Coffees</button>
-        <button class="cat-tab px-5 py-2.5 rounded-full text-sm text-[#808588] font-medium syne" data-target="noncoffee">Non-Coffee</button>
-        <button class="cat-tab px-5 py-2.5 rounded-full text-sm text-[#808588] font-medium syne" data-target="food">Food</button>
-        <button class="cat-tab px-5 py-2.5 rounded-full text-sm text-[#808588] font-medium syne" data-target="snacks">Snacks</button>
-        <button class="cat-tab px-5 py-2.5 rounded-full text-sm text-[#808588] font-medium syne" data-target="others">Others</button>
-      </div>
-
-      <!-- ─── COFFEE ─── -->
-      <div id="menu-coffee" class="menu-section active">
-        <div class="grid lg:grid-cols-2 gap-x-16">
-          <div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Brewed Coffee</p>
-                <p class="text-[#808588] text-xs mt-0.5">Classic daily brew</p>
-              </div>
-              <p class="price-tag">₱80</p>
+        <!-- ── COFFEE SECTION ── -->
+        <div class="mb-20" id="section-coffee">
+          <div class="flex items-center gap-5 mb-10">
+            <div class="w-10 h-10 rounded-xl bg-gold/10 border border-gold/25 flex items-center justify-center text-xl">☕</div>
+            <div>
+              <h2 class="font-syne font-800 text-studio text-2xl sm:text-3xl">Coffee &amp; Blends</h2>
+              <p class="font-inter text-studio/40 text-xs tracking-wider uppercase mt-0.5">Crafted to fuel your creative session</p>
             </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Espresso</p>
-                <p class="text-[#808588] text-xs mt-0.5">Single / Double shot</p>
-              </div>
-              <p class="price-tag">₱90</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Iced Americano</p>
-                <p class="text-[#808588] text-xs mt-0.5">The creator's fuel</p>
-              </div>
-              <p class="price-tag">₱120</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Café Latte</p>
-                <p class="text-[#808588] text-xs mt-0.5">Smooth & milky</p>
-              </div>
-              <p class="price-tag">₱140</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Cappuccino</p>
-                <p class="text-[#808588] text-xs mt-0.5">Velvety foam finish</p>
-              </div>
-              <p class="price-tag">₱140</p>
-            </div>
+            <div class="flex-1 h-px bg-gradient-to-r from-gold/25 to-transparent ml-4"></div>
           </div>
-          <div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Coffee Float</p>
-                <p class="text-[#808588] text-xs mt-0.5">Espresso + ice cream ✦ Bestseller</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="menu-grid-coffee">
+
+            <!-- Coffee Float -->
+            <article class="menu-card rounded-2xl overflow-hidden group" data-category="coffee">
+              <div class="relative h-52 bg-noir-mid overflow-hidden flex items-center justify-center">
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-32 h-32 rounded-full blur-3xl opacity-20" style="background: #d4af37;"></div>
+                </div>
+                <div class="relative z-10 text-7xl select-none">☕</div>
+                <div class="absolute top-4 left-4">
+                  <span class="item-tag bg-gold/20 border border-gold/30 text-gold font-syne uppercase tracking-widest">Best Seller</span>
+                </div>
               </div>
-              <p class="price-tag">₱150</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Mocha</p>
-                <p class="text-[#808588] text-xs mt-0.5">Rich chocolate espresso</p>
+              <div class="p-6">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="font-syne font-700 text-studio text-xl leading-tight">Coffee Float</h3>
+                  <span class="price-badge font-syne font-700 text-gold text-sm px-3 py-1.5 rounded-lg whitespace-nowrap ml-3">₱120 – ₱180</span>
+                </div>
+                <p class="font-inter text-studio/50 text-sm leading-relaxed mb-4">Rich espresso shots poured over a cloud of vanilla ice cream — the ultimate crash between bold and sweet. A studio staple.</p>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="item-tag bg-blue-500/10 border border-blue-400/20 text-blue-300/80 font-inter">Cold</span>
+                  <span class="item-tag bg-white/5 border border-white/10 text-studio/50 font-inter">Sweetness Adjustable</span>
+                </div>
               </div>
-              <p class="price-tag">₱145</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Caramel Macchiato</p>
-                <p class="text-[#808588] text-xs mt-0.5">Layered & sweet</p>
+            </article>
+
+            <!-- Iced Americano -->
+            <article class="menu-card rounded-2xl overflow-hidden group" data-category="coffee">
+              <div class="relative h-52 bg-noir-mid overflow-hidden flex items-center justify-center">
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-32 h-32 rounded-full blur-3xl opacity-15" style="background: #6b4c2a;"></div>
+                </div>
+                <div class="relative z-10 text-7xl select-none">🖤</div>
+                <div class="absolute top-4 left-4">
+                  <span class="item-tag bg-white/5 border border-white/10 text-studio/60 font-syne uppercase tracking-widest">Signature</span>
+                </div>
               </div>
-              <p class="price-tag">₱155</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Cold Brew</p>
-                <p class="text-[#808588] text-xs mt-0.5">12-hour steeped</p>
+              <div class="p-6">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="font-syne font-700 text-studio text-xl leading-tight">Iced Americano</h3>
+                  <span class="price-badge font-syne font-700 text-gold text-sm px-3 py-1.5 rounded-lg whitespace-nowrap ml-3">₱85 – ₱130</span>
+                </div>
+                <p class="font-inter text-studio/50 text-sm leading-relaxed mb-4">Dark, clean, and unapologetically bold. Double-shot espresso diluted with cold water over ice. The photographer's fuel of choice.</p>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="item-tag bg-blue-500/10 border border-blue-400/20 text-blue-300/80 font-inter">Cold</span>
+                  <span class="item-tag bg-white/5 border border-white/10 text-studio/50 font-inter">Vegan Friendly</span>
+                </div>
               </div>
-              <p class="price-tag">₱150</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Signature Ssoluz Blend</p>
-                <p class="text-[#808588] text-xs mt-0.5">Our house specialty</p>
-              </div>
-              <p class="price-tag">₱165</p>
-            </div>
+            </article>
+
           </div>
         </div>
-      </div>
 
-      <!-- ─── NON-COFFEE ─── -->
-      <div id="menu-noncoffee" class="menu-section">
-        <div class="grid lg:grid-cols-2 gap-x-16">
-          <div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Sparkling Iced Shaken Peach Tea</p>
-                <p class="text-[#808588] text-xs mt-0.5">Fan favourite ✦ Effervescent</p>
-              </div>
-              <p class="price-tag">₱145</p>
+        <!-- ── DRINKS SECTION ── -->
+        <div class="mb-20" id="section-drinks">
+          <div class="flex items-center gap-5 mb-10">
+            <div class="w-10 h-10 rounded-xl bg-gold/10 border border-gold/25 flex items-center justify-center text-xl">🥤</div>
+            <div>
+              <h2 class="font-syne font-800 text-studio text-2xl sm:text-3xl">Specialty Drinks</h2>
+              <p class="font-inter text-studio/40 text-xs tracking-wider uppercase mt-0.5">Crafted for flavor, not just thirst</p>
             </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Iced Matcha Latte</p>
-                <p class="text-[#808588] text-xs mt-0.5">Japanese ceremonial grade</p>
-              </div>
-              <p class="price-tag">₱145</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Iced Chocolate</p>
-                <p class="text-[#808588] text-xs mt-0.5">Dark & milk chocolate blend</p>
-              </div>
-              <p class="price-tag">₱130</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Strawberry Slush</p>
-                <p class="text-[#808588] text-xs mt-0.5">Fresh & blended</p>
-              </div>
-              <p class="price-tag">₱130</p>
-            </div>
+            <div class="flex-1 h-px bg-gradient-to-r from-gold/25 to-transparent ml-4"></div>
           </div>
-          <div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Taro Milk Tea</p>
-                <p class="text-[#808588] text-xs mt-0.5">Creamy & earthy</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+            <!-- Sparkling Iced Shaken Peach Tea -->
+            <article class="menu-card rounded-2xl overflow-hidden group" data-category="drinks">
+              <div class="relative h-52 bg-noir-mid overflow-hidden flex items-center justify-center">
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-32 h-32 rounded-full blur-3xl opacity-20" style="background: #f4a460;"></div>
+                </div>
+                <div class="relative z-10 text-7xl select-none">🍑</div>
+                <div class="absolute top-4 left-4">
+                  <span class="item-tag bg-amber-500/15 border border-amber-400/25 text-amber-300/90 font-syne uppercase tracking-widest">Fan Fave</span>
+                </div>
               </div>
-              <p class="price-tag">₱135</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Tropical Mango Soda</p>
-                <p class="text-[#808588] text-xs mt-0.5">Fizzy, fruity, refreshing</p>
+              <div class="p-6">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="font-syne font-700 text-studio text-xl leading-tight">Sparkling Iced Shaken Peach Tea</h3>
+                  <span class="price-badge font-syne font-700 text-gold text-sm px-3 py-1.5 rounded-lg whitespace-nowrap ml-3">₱95 – ₱145</span>
+                </div>
+                <p class="font-inter text-studio/50 text-sm leading-relaxed mb-4">Vibrant peach-forward tea, hand-shaken and finished with a sparkling pop. Light, fruity, and impossibly refreshing — the anti-coffee pick.</p>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="item-tag bg-amber-500/10 border border-amber-400/20 text-amber-300/80 font-inter">Sparkling</span>
+                  <span class="item-tag bg-white/5 border border-white/10 text-studio/50 font-inter">Non-Coffee</span>
+                  <span class="item-tag bg-green-500/10 border border-green-400/20 text-green-300/80 font-inter">Refreshing</span>
+                </div>
               </div>
-              <p class="price-tag">₱120</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Brown Sugar Milk</p>
-                <p class="text-[#808588] text-xs mt-0.5">Warm or iced</p>
-              </div>
-              <p class="price-tag">₱125</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Lemon Iced Tea</p>
-                <p class="text-[#808588] text-xs mt-0.5">Classic & crisp</p>
-              </div>
-              <p class="price-tag">₱100</p>
-            </div>
+            </article>
+
           </div>
         </div>
-      </div>
 
-      <!-- ─── FOOD ─── -->
-      <div id="menu-food" class="menu-section">
-        <div class="grid lg:grid-cols-2 gap-x-16">
-          <div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Shrimp Aglio Olio</p>
-                <p class="text-[#808588] text-xs mt-0.5">Garlic olive oil pasta ✦ Chef's pick</p>
-              </div>
-              <p class="price-tag">₱280</p>
+        <!-- ── FOOD SECTION ── -->
+        <div class="mb-16" id="section-food">
+          <div class="flex items-center gap-5 mb-10">
+            <div class="w-10 h-10 rounded-xl bg-gold/10 border border-gold/25 flex items-center justify-center text-xl">🍽️</div>
+            <div>
+              <h2 class="font-syne font-800 text-studio text-2xl sm:text-3xl">Studio Bites</h2>
+              <p class="font-inter text-studio/40 text-xs tracking-wider uppercase mt-0.5">Proper food for longer sessions</p>
             </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Pasta Carbonara</p>
-                <p class="text-[#808588] text-xs mt-0.5">Creamy classic</p>
-              </div>
-              <p class="price-tag">₱260</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Garlic Butter Chicken</p>
-                <p class="text-[#808588] text-xs mt-0.5">Served with rice</p>
-              </div>
-              <p class="price-tag">₱250</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Spam & Egg Silog</p>
-                <p class="text-[#808588] text-xs mt-0.5">With sinangag & itlog</p>
-              </div>
-              <p class="price-tag">₱160</p>
-            </div>
+            <div class="flex-1 h-px bg-gradient-to-r from-gold/25 to-transparent ml-4"></div>
           </div>
-          <div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Longsilog</p>
-                <p class="text-[#808588] text-xs mt-0.5">Local comfort done right</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+            <!-- Shrimp Aglio Olio -->
+            <article class="menu-card rounded-2xl overflow-hidden group" data-category="food">
+              <div class="relative h-52 bg-noir-mid overflow-hidden flex items-center justify-center">
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-32 h-32 rounded-full blur-3xl opacity-15" style="background: #e8c84a;"></div>
+                </div>
+                <div class="relative z-10 text-7xl select-none">🍝</div>
+                <div class="absolute top-4 left-4">
+                  <span class="item-tag bg-gold/20 border border-gold/30 text-gold font-syne uppercase tracking-widest">Chef's Pick</span>
+                </div>
               </div>
-              <p class="price-tag">₱150</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Tuna Melt Sandwich</p>
-                <p class="text-[#808588] text-xs mt-0.5">Toasted, cheesy, satisfying</p>
+              <div class="p-6">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="font-syne font-700 text-studio text-xl leading-tight">Shrimp Aglio Olio</h3>
+                  <span class="price-badge font-syne font-700 text-gold text-sm px-3 py-1.5 rounded-lg whitespace-nowrap ml-3">₱280 – ₱350</span>
+                </div>
+                <p class="font-inter text-studio/50 text-sm leading-relaxed mb-4">Al dente pasta tossed in fragrant garlic-infused oil, plump shrimp, and a whisper of chili flakes. Simple, elegant, and deeply satisfying.</p>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="item-tag bg-red-500/10 border border-red-400/20 text-red-300/80 font-inter">Mild Spice</span>
+                  <span class="item-tag bg-white/5 border border-white/10 text-studio/50 font-inter">Pasta</span>
+                </div>
               </div>
-              <p class="price-tag">₱190</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Club Sandwich</p>
-                <p class="text-[#808588] text-xs mt-0.5">Triple decker, served with fries</p>
+            </article>
+
+            <!-- Studio Nachos -->
+            <article class="menu-card rounded-2xl overflow-hidden group" data-category="food">
+              <div class="relative h-52 bg-noir-mid overflow-hidden flex items-center justify-center">
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-32 h-32 rounded-full blur-3xl opacity-15" style="background: #f97316;"></div>
+                </div>
+                <div class="relative z-10 text-7xl select-none">🧀</div>
+                <div class="absolute top-4 left-4">
+                  <span class="item-tag bg-orange-500/15 border border-orange-400/25 text-orange-300/90 font-syne uppercase tracking-widest">Crowd Fave</span>
+                </div>
               </div>
-              <p class="price-tag">₱220</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Beef Salpicao</p>
-                <p class="text-[#808588] text-xs mt-0.5">With garlic rice</p>
+              <div class="p-6">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="font-syne font-700 text-studio text-xl leading-tight">Studio Nachos</h3>
+                  <span class="price-badge font-syne font-700 text-gold text-sm px-3 py-1.5 rounded-lg whitespace-nowrap ml-3">₱180 – ₱240</span>
+                </div>
+                <p class="font-inter text-studio/50 text-sm leading-relaxed mb-4">A generous mountain of crispy chips loaded with melted cheese, jalapeños, salsa, and sour cream. The perfect shareable for a studio group session.</p>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="item-tag bg-orange-500/10 border border-orange-400/20 text-orange-300/80 font-inter">Shareable</span>
+                  <span class="item-tag bg-white/5 border border-white/10 text-studio/50 font-inter">Vegetarian</span>
+                </div>
               </div>
-              <p class="price-tag">₱320</p>
-            </div>
+            </article>
+
           </div>
         </div>
+
       </div>
+    </section>
 
-      <!-- ─── SNACKS ─── -->
-      <div id="menu-snacks" class="menu-section">
-        <div class="grid lg:grid-cols-2 gap-x-16">
-          <div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Studio Nachos</p>
-                <p class="text-[#808588] text-xs mt-0.5">Loaded & shareable ✦ Crowd fave</p>
-              </div>
-              <p class="price-tag">₱220</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Waffle Fries</p>
-                <p class="text-[#808588] text-xs mt-0.5">With house dip</p>
-              </div>
-              <p class="price-tag">₱140</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Garlic Cheese Bread</p>
-                <p class="text-[#808588] text-xs mt-0.5">Pull-apart, buttery</p>
-              </div>
-              <p class="price-tag">₱120</p>
-            </div>
-          </div>
-          <div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Mini Pancake Stack</p>
-                <p class="text-[#808588] text-xs mt-0.5">With syrup & butter</p>
-              </div>
-              <p class="price-tag">₱135</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Chicharon Bulaklak</p>
-                <p class="text-[#808588] text-xs mt-0.5">Local crispy delight</p>
-              </div>
-              <p class="price-tag">₱130</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Onion Rings</p>
-                <p class="text-[#808588] text-xs mt-0.5">Crispy beer-battered</p>
-              </div>
-              <p class="price-tag">₱120</p>
-            </div>
-          </div>
-        </div>
+    <!-- ═══════════════ BUDBOD NI MASTER ═══════════════ -->
+    <section class="budbod-section relative overflow-hidden py-24 lg:py-36 border-t border-gold/15">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[150px] opacity-10" style="background: radial-gradient(circle, #d4af37, transparent 60%);"></div>
       </div>
-
-      <!-- ─── OTHERS ─── -->
-      <div id="menu-others" class="menu-section">
-        <div class="grid lg:grid-cols-2 gap-x-16">
-          <div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Bottled Water</p>
-                <p class="text-[#808588] text-xs mt-0.5">Chilled</p>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
+          <!-- Left: Badge -->
+          <div class="flex justify-center lg:justify-start">
+            <div class="relative">
+              <div class="absolute inset-0 rounded-3xl blur-2xl opacity-25" style="background: radial-gradient(circle, #d4af37, transparent 60%);"></div>
+              <div class="relative border-2 border-gold/40 rounded-3xl p-10 bg-noir-light/70 text-center" style="backdrop-filter: blur(20px);">
+                <div class="w-20 h-20 rounded-2xl bg-gold/15 border border-gold/30 flex items-center justify-center mx-auto mb-6">
+                  <i class="fas fa-star text-gold text-3xl"></i>
+                </div>
+                <p class="font-syne text-gold/70 tracking-[0.4em] uppercase text-xs mb-3">Official Partner</p>
+                <h3 class="font-syne font-800 text-studio text-3xl lg:text-4xl mb-2">Budbod<br/>ni Master</h3>
+                <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto my-5"></div>
+                <p class="font-inter text-studio/50 text-sm">Exclusive at Ssoluz</p>
               </div>
-              <p class="price-tag">₱50</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Canned Soda</p>
-                <p class="text-[#808588] text-xs mt-0.5">Assorted</p>
-              </div>
-              <p class="price-tag">₱80</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Add-ons: Extra Shot</p>
-                <p class="text-[#808588] text-xs mt-0.5">Espresso add-on</p>
-              </div>
-              <p class="price-tag">₱40</p>
             </div>
           </div>
+          <!-- Right: Description -->
           <div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Add-ons: Oat Milk</p>
-                <p class="text-[#808588] text-xs mt-0.5">Plant-based swap</p>
-              </div>
-              <p class="price-tag">₱50</p>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-8 h-px bg-gold"></div>
+              <span class="font-syne text-gold/80 tracking-[0.3em] uppercase text-xs">Partner Highlight</span>
             </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Add-ons: Pearls / Jelly</p>
-                <p class="text-[#808588] text-xs mt-0.5">For drinks</p>
-              </div>
-              <p class="price-tag">₱30</p>
-            </div>
-            <div class="menu-item py-5 flex items-center justify-between group">
-              <div>
-                <p class="syne font-semibold text-[#f4f4f4] group-hover:text-[#d4af37] transition-colors duration-300">Add-ons: Extra Rice</p>
-                <p class="text-[#808588] text-xs mt-0.5">For meals</p>
-              </div>
-              <p class="price-tag">₱25</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <div class="section-divider mx-10"></div>
-
-  <!-- ══════════════════════════════════════
-       BUDBOD NI MASTER — SIGNATURE SECTION
-  ══════════════════════════════════════ -->
-  <section class="py-20 lg:py-28">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="budbod-section rounded-3xl p-10 lg:p-16">
-        <div class="grid lg:grid-cols-[1fr_1.5fr] gap-12 items-center">
-          <div class="text-center">
-            <div class="text-8xl mb-4">🍢</div>
-            <div class="inline-block bg-[#d4af37]/15 border border-[#d4af37]/30 rounded-full px-4 py-1.5">
-              <p class="text-[#d4af37] text-xs font-bold tracking-widest uppercase">Specialty Item</p>
-            </div>
-          </div>
-          <div>
-            <p class="text-[#d4af37] text-xs font-semibold tracking-[0.3em] uppercase mb-3">The Ssoluz Original</p>
-            <h2 class="syne text-4xl lg:text-5xl font-black text-[#f4f4f4] mb-6">
-              Budbod ni<br/>
-              <span style="color:#d4af37">Master.</span>
+            <h2 class="font-syne font-800 text-studio text-4xl sm:text-5xl lg:text-6xl leading-[1.0] mb-6">
+              A Taste<br/>Worth<br/><span class="shimmer-text">Talking About.</span>
             </h2>
-            <p class="text-[#808588] text-base leading-relaxed mb-6">
-              A house specialty born from passion and tradition. Our master's take on the classic Filipino budbod — elevated with Ssoluz's signature touch. Sticky, fragrant, and lovingly prepared in-house. This isn't something you'll find anywhere else in Rizal.
+            <p class="font-inter text-studio/55 text-base lg:text-lg leading-relaxed mb-6">
+              <strong class="text-studio font-600">Budbod ni Master</strong> is our exclusive partner brand, bringing authentic, handcrafted Filipino flavors into the Ssoluz experience. Each piece is made with tradition, pride, and a whole lot of love.
             </p>
-            <p class="text-[#f4f4f4]/70 text-sm leading-relaxed mb-8">
-              Ask our team about today's availability and flavor variants. Limited quantities served daily — a true taste of what makes Ssoluz special.
+            <p class="font-inter text-studio/40 text-sm leading-relaxed mb-10">
+              Available only at Ssoluz Cafe & Studio — because some good things are worth the trip to Taytay.
             </p>
-            <div class="flex items-center gap-6">
-              <div>
-                <p class="price-tag text-2xl">Market Price</p>
-                <p class="text-[#808588] text-xs mt-0.5">Ask us for today's offering</p>
-              </div>
-              <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" class="btn-gold px-6 py-3 rounded-full text-sm inline-block">
-                Inquire Now
+            <div class="flex flex-wrap gap-4">
+              <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" class="border border-gold bg-gold/10 text-gold font-syne text-xs tracking-widest uppercase px-7 py-3 hover:bg-gold hover:text-noir transition-all duration-300 min-h-[44px] flex items-center gap-2">
+                <i class="fab fa-facebook-messenger"></i> Ask About Availability
               </a>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA STRIP -->
-  <section class="pb-24">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="rounded-2xl bg-white/[0.02] border border-white/5 p-10 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <p class="syne text-2xl font-bold text-[#f4f4f4]">Ready to visit?</p>
-          <p class="text-[#808588] text-sm mt-1">Open 8:00 AM – 12:00 AM daily &nbsp;·&nbsp; 42 Rizal Ave, Taytay</p>
-        </div>
-        <div class="flex gap-4 flex-wrap justify-center md:justify-end">
-          <a href="booking.html" class="btn-gold px-7 py-3 rounded-full text-sm">Book a Table →</a>
-          <a href="tel:+639175770428" class="px-7 py-3 rounded-full text-sm border border-white/10 text-[#808588] hover:text-[#f4f4f4] hover:border-white/20 transition-all duration-300">Call Us</a>
-        </div>
+    <!-- ═══════════════ BOOK CTA ═══════════════ -->
+    <section class="py-20 bg-noir-light border-t border-white/6">
+      <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center">
+        <p class="font-syne text-gold/70 tracking-[0.3em] uppercase text-xs mb-4">More Than Just Coffee</p>
+        <h2 class="font-syne font-800 text-studio text-3xl sm:text-4xl lg:text-5xl mb-6">Book a Table. Stay a While.</h2>
+        <p class="font-inter text-studio/50 text-base mb-10 max-w-md mx-auto">Dine in, shoot, and create — all under one roof. Reserve your spot at Ssoluz today.</p>
+        <a href="booking.html" class="inline-flex items-center gap-3 border border-gold bg-gold text-noir font-syne font-700 tracking-widest uppercase text-sm px-10 py-4 hover:bg-gold-light transition-all duration-300 min-h-[52px]">
+          Reserve a Table <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
-    </div>
-  </section>
-
+    </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-[#111112] border-t border-white/5 pt-16 pb-8">
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="bg-noir border-t border-white/8 pt-16 pb-8">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-        <div class="lg:col-span-2">
-          <p class="syne text-2xl font-black text-[#f4f4f4] mb-3">SSOLUZ<span style="color:#d4af37">.</span></p>
-          <p class="text-[#808588] text-sm leading-relaxed max-w-xs mb-6">
-            Rizal's first ever self-shoot studio. A space for coffee, creativity, and authentic self-expression.
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-14">
+        <div>
+          <img src="https://i.ibb.co/wFSkxGzb/272866390-107870021808169-3941744220203550073-n.jpg" alt="Ssoluz Logo" class="h-16 w-auto object-contain mb-5" />
+          <p class="font-inter text-studio/40 text-sm leading-relaxed max-w-xs">Coffee. Studio. Soul. — Rizal's first ever self-shoot studio in the heart of Taytay.</p>
+        </div>
+        <div>
+          <h4 class="font-syne font-700 text-studio text-sm tracking-widest uppercase mb-6">Navigate</h4>
+          <ul class="flex flex-col gap-3">
+            <li><a href="index.html" class="font-inter text-studio/50 text-sm hover:text-gold transition-colors duration-300">Home</a></li>
+            <li><a href="menu.html" class="font-inter text-gold text-sm">Menu</a></li>
+            <li><a href="booking.html" class="font-inter text-studio/50 text-sm hover:text-gold transition-colors duration-300">Book a Session</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-syne font-700 text-studio text-sm tracking-widest uppercase mb-6">Connect</h4>
+          <div class="flex items-center gap-4 mb-8">
+            <a href="https://www.facebook.com/ssoluz.cafeandstudio" target="_blank" rel="noopener" aria-label="Facebook" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
+              <i class="fab fa-facebook-f text-base"></i>
+            </a>
+            <a href="https://www.instagram.com/ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="Instagram" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
+              <i class="fab fa-instagram text-base"></i>
+            </a>
+            <a href="https://www.tiktok.com/@ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="TikTok" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
+              <i class="fab fa-tiktok text-base"></i>
+            </a>
+            <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" aria-label="Messenger" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold transition-all duration-300">
+              <i class="fab fa-facebook-messenger text-base"></i>
+            </a>
+          </div>
+          <a href="tel:09175770428" class="font-inter text-studio/40 text-sm hover:text-gold transition-colors flex items-center gap-2 mb-2">
+            <i class="fas fa-phone text-gold/50 text-xs"></i> 0917 577 0428
+          </a>
+          <p class="font-inter text-studio/40 text-sm flex items-start gap-2">
+            <i class="fas fa-map-marker-alt text-gold/50 text-xs mt-1"></i> 42 Rizal Ave, Taytay, 1920 Rizal
           </p>
-          <div class="flex gap-4">
-            <a href="https://www.facebook.com/ssoluz.cafeandstudio" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#d4af37]/20 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-              <i class="fa-brands fa-facebook-f text-[#808588] text-sm"></i>
-            </a>
-            <a href="https://www.instagram.com/ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#d4af37]/20 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-              <i class="fa-brands fa-instagram text-[#808588] text-sm"></i>
-            </a>
-            <a href="https://www.tiktok.com/@ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="TikTok" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#d4af37]/20 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-              <i class="fa-brands fa-tiktok text-[#808588] text-sm"></i>
-            </a>
-          </div>
-        </div>
-        <div>
-          <p class="syne text-xs font-bold text-[#f4f4f4] tracking-widest uppercase mb-5">Quick Links</p>
-          <div class="flex flex-col gap-3">
-            <a href="index.html" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">Home</a>
-            <a href="menu.html" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">Menu</a>
-            <a href="booking.html" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">Book a Session</a>
-            <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">Message Us</a>
-          </div>
-        </div>
-        <div>
-          <p class="syne text-xs font-bold text-[#f4f4f4] tracking-widest uppercase mb-5">Contact</p>
-          <div class="flex flex-col gap-3">
-            <div>
-              <p class="text-[#d4af37] text-xs font-semibold uppercase tracking-wider mb-1">Hours</p>
-              <p class="text-[#808588] text-sm">8:00 AM – 12:00 AM</p>
-              <p class="text-[#808588] text-xs">Open Daily</p>
-            </div>
-            <a href="tel:+639175770428" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">0917 577 0428</a>
-            <a href="mailto:ssoluzstudio@gmail.com" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300 break-all">ssoluzstudio@gmail.com</a>
-            <p class="text-[#808588] text-sm leading-relaxed">42 Rizal Ave, Taytay,<br/>1920 Rizal</p>
-          </div>
         </div>
       </div>
-      <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-3">
-        <p class="text-[#808588] text-xs">© 2025 Ssoluz Cafe & Studio. All rights reserved.</p>
-        <p class="text-[#808588] text-xs">Built with <span class="text-[#d4af37]">♥</span> by Steven Designs</p>
+      <div style="background: linear-gradient(90deg, transparent, #d4af37, transparent); height: 1px;" class="opacity-20 mb-6"></div>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="font-inter text-studio/25 text-xs">© 2024 Ssoluz Cafe & Studio. All rights reserved.</p>
+        <p class="font-syne text-gold/30 text-xs tracking-widest uppercase">Coffee · Studio · Soul</p>
       </div>
     </div>
   </footer>
 
   <!-- FAB -->
-  <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" class="fab-messenger" aria-label="Message us on Messenger">
-    <i class="fa-brands fa-facebook-messenger text-[#1a1a1b] text-xl"></i>
+  <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" aria-label="Message us on Messenger" class="fab fixed bottom-7 right-7 z-50 w-16 h-16 rounded-full bg-gold flex items-center justify-center" style="box-shadow: 0 0 20px rgba(212,175,55,0.4);">
+    <i class="fab fa-facebook-messenger text-noir text-2xl"></i>
   </a>
 
   <script>
-    // Mobile menu
-    document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.toggle('hidden');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    let menuOpen = false;
+    menuToggle.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.style.maxHeight = menuOpen ? mobileMenu.scrollHeight + 'px' : '0';
+      menuIcon.className = menuOpen ? 'fas fa-times' : 'fas fa-bars';
     });
 
-    // Tab switching
-    const tabs = document.querySelectorAll('.cat-tab');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => { t.classList.remove('active'); t.classList.add('text-[#808588]'); t.classList.remove('text-[#f4f4f4]'); });
-        tab.classList.add('active');
-        tab.classList.remove('text-[#808588]');
-
-        const target = tab.dataset.target;
-        document.querySelectorAll('.menu-section').forEach(s => s.classList.remove('active'));
-        document.getElementById('menu-' + target).classList.add('active');
+    function filterMenu(cat, btn) {
+      document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const articles = document.querySelectorAll('article[data-category]');
+      articles.forEach(a => {
+        const show = cat === 'all' || a.dataset.category === cat;
+        a.closest('article').style.display = show ? '' : 'none';
       });
-    });
+      const sections = ['coffee','drinks','food'];
+      sections.forEach(s => {
+        const sec = document.getElementById('section-' + s);
+        if (sec) {
+          const visible = Array.from(sec.querySelectorAll('article')).some(a => a.style.display !== 'none');
+          sec.style.display = (cat === 'all' || visible) ? '' : 'none';
+        }
+      });
+    }
   </script>
 </body>
 </html>
