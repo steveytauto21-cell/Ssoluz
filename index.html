@@ -3,657 +3,487 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ssoluz Cafe & Studio | Rizal's First Self-Shoot Studio in Taytay</title>
-  <meta name="description" content="Ssoluz Cafe & Studio — Rizal's first ever self-shoot studio. Coffee, creative space, and soul in Taytay, Rizal. Open 8AM–12AM daily." />
+  <title>Ssoluz Cafe & Studio — Rizal's First Self-Shoot Studio | Taytay</title>
+  <meta name="description" content="Ssoluz Cafe & Studio — Rizal's first ever self-shoot studio. Coffee, studio, and soul in the heart of Taytay, Rizal. Book your session today." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" defer />
-  <script src="https://cdn.tailwindcss.com" defer></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            noir: '#1a1a1b',
+            'noir-light': '#242425',
+            'noir-mid': '#2e2e2f',
+            studio: '#f4f4f4',
+            gold: '#d4af37',
+            'gold-light': '#e8c84a',
+            'gold-dim': '#a8891f',
+          },
+          fontFamily: {
+            syne: ['Syne', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            gold: '0 0 20px rgba(212,175,55,0.4)',
+            'gold-lg': '0 0 40px rgba(212,175,55,0.5)',
+          },
+        },
+      },
+    }
+  </script>
   <style>
-    :root {
-      --concrete: #808588;
-      --black: #1a1a1b;
-      --white: #f4f4f4;
-      --gold: #d4af37;
-    }
-    * { font-family: 'Inter', sans-serif; }
-    h1, h2, h3, h4, .syne { font-family: 'Syne', sans-serif; }
-    body { background-color: #1a1a1b; color: #f4f4f4; overflow-x: hidden; }
-
-    /* NAV */
+    body { background-color: #1a1a1b; color: #f4f4f4; font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+    .gold-glow { box-shadow: 0 0 20px rgba(212,175,55,0.4); }
+    .gold-glow:hover { box-shadow: 0 0 40px rgba(212,175,55,0.6); }
+    .glass { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(26,26,27,0.75); border-bottom: 1px solid rgba(212,175,55,0.15); }
+    .noise-bg { position: relative; }
+    .noise-bg::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; }
+    .hero-grid { background-image: linear-gradient(rgba(212,175,55,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+    .marquee-track { animation: marquee 22s linear infinite; white-space: nowrap; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .card-hover { transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .card-hover:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.25); }
     .nav-link { position: relative; }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -3px;
-      width: 0; height: 1px;
-      background: #d4af37;
-      transition: width 0.3s ease;
-    }
+    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: #d4af37; transition: width 0.3s ease; }
     .nav-link:hover::after { width: 100%; }
-
-    /* HERO */
-    .hero-bg {
-      background: linear-gradient(135deg, #1a1a1b 0%, #2a2a2c 40%, #1a1a1b 100%);
-      position: relative;
-    }
-    .hero-bg::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 70% 50%, rgba(212,175,55,0.06) 0%, transparent 70%);
-    }
-    .hero-grid-overlay {
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(rgba(128,133,136,0.04) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(128,133,136,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    /* GOLD ACCENT LINE */
-    .gold-line {
-      width: 48px; height: 2px;
-      background: linear-gradient(90deg, #d4af37, transparent);
-    }
-
-    /* BENTO */
-    .bento-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      transition: all 0.4s ease;
-    }
-    .bento-card:hover {
-      background: rgba(212,175,55,0.05);
-      border-color: rgba(212,175,55,0.25);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    }
-
-    /* REVIEW CARDS */
-    .review-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: all 0.4s ease;
-    }
-    .review-card:hover {
-      border-color: rgba(212,175,55,0.2);
-      transform: translateY(-3px);
-      box-shadow: 0 16px 32px rgba(0,0,0,0.3);
-    }
-
-    /* HAMBURGER */
-    #mobile-menu { transition: all 0.3s ease; }
-
-    /* FLOATING MESSENGER */
-    .fab-messenger {
-      position: fixed;
-      bottom: 28px; right: 28px;
-      z-index: 9999;
-      width: 56px; height: 56px;
-      background: linear-gradient(135deg, #d4af37, #b8962e);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 24px rgba(212,175,55,0.35);
-      transition: all 0.3s ease;
-    }
-    .fab-messenger:hover {
-      transform: scale(1.1);
-      box-shadow: 0 12px 32px rgba(212,175,55,0.5);
-    }
-
-    /* SECTION DIVIDER */
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(128,133,136,0.2), transparent);
-    }
-
-    /* PWD SECTION */
-    .pwd-section {
-      background: linear-gradient(135deg, rgba(212,175,55,0.06), rgba(212,175,55,0.02));
-      border-top: 1px solid rgba(212,175,55,0.15);
-      border-bottom: 1px solid rgba(212,175,55,0.15);
-    }
-
-    /* NOISE TEXTURE */
-    .texture-overlay {
-      position: absolute; inset: 0;
-      opacity: 0.015;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    }
-
-    /* CTA BUTTON */
-    .btn-gold {
-      background: linear-gradient(135deg, #d4af37, #b8962e);
-      color: #1a1a1b;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      transition: all 0.3s ease;
-    }
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(212,175,55,0.4);
-    }
-    .btn-outline {
-      border: 1px solid rgba(212,175,55,0.5);
-      color: #d4af37;
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .btn-outline:hover {
-      background: rgba(212,175,55,0.1);
-      border-color: #d4af37;
-      transform: translateY(-2px);
-    }
-
-    .star { color: #d4af37; }
-    .about-img-frame {
-      border: 1px solid rgba(212,175,55,0.2);
-      position: relative;
-    }
-    .about-img-frame::before {
-      content: '';
-      position: absolute;
-      top: -8px; left: -8px;
-      right: 8px; bottom: 8px;
-      border-top: 2px solid rgba(212,175,55,0.3);
-      border-left: 2px solid rgba(212,175,55,0.3);
-      pointer-events: none;
-    }
+    .text-stroke { -webkit-text-stroke: 1px rgba(212,175,55,0.4); color: transparent; }
+    .bento-tall { grid-row: span 2; }
+    .advocacy-line { width: 3px; background: linear-gradient(to bottom, #d4af37, transparent); }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+    .fade-up { animation: fadeUp 0.9s ease forwards; }
+    .delay-1 { animation-delay: 0.15s; opacity: 0; }
+    .delay-2 { animation-delay: 0.3s; opacity: 0; }
+    .delay-3 { animation-delay: 0.45s; opacity: 0; }
+    .separator-gold { background: linear-gradient(90deg, transparent, #d4af37, transparent); height: 1px; }
+    .fab { transition: all 0.3s ease; }
+    .fab:hover { transform: scale(1.12) rotate(-5deg); box-shadow: 0 0 40px rgba(212,175,55,0.7); }
+    .mobile-menu { transition: all 0.35s cubic-bezier(0.16,1,0.3,1); }
   </style>
 </head>
-<body>
+<body class="overflow-x-hidden bg-noir">
 
-  <!-- ══════════════════════════════════════
-       STICKY NAV
-  ══════════════════════════════════════ -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#1a1a1b]/90 backdrop-blur-md border-b border-white/5">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-16">
-      <!-- Logo -->
-      <a href="index.html" class="syne text-[#f4f4f4] font-bold text-xl tracking-wider">
-        SSOLUZ<span style="color:#d4af37">.</span>
+  <!-- ═══════════════ NAVBAR ═══════════════ -->
+  <nav class="glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+      <a href="index.html" aria-label="Ssoluz Home">
+        <img src="https://i.ibb.co/wFSkxGzb/272866390-107870021808169-3941744220203550073-n.jpg" alt="Ssoluz Logo" class="h-14 w-auto object-contain" />
       </a>
-
-      <!-- Desktop Nav -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="index.html" class="nav-link text-sm text-[#f4f4f4] font-medium tracking-wide">Home</a>
-        <a href="menu.html" class="nav-link text-sm text-[#808588] hover:text-[#f4f4f4] tracking-wide transition-colors duration-300">Menu</a>
-        <a href="booking.html" class="nav-link text-sm text-[#808588] hover:text-[#f4f4f4] tracking-wide transition-colors duration-300">Book</a>
-        <a href="booking.html" class="btn-gold px-5 py-2 rounded-full text-sm">Reserve Now</a>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="index.html" class="nav-link font-syne font-600 text-gold tracking-widest uppercase text-sm">Home</a>
+        <a href="menu.html" class="nav-link font-syne text-studio/70 hover:text-studio tracking-widest uppercase text-sm transition-colors duration-300">Menu</a>
+        <a href="booking.html" class="nav-link font-syne text-studio/70 hover:text-studio tracking-widest uppercase text-sm transition-colors duration-300">Book</a>
+        <a href="booking.html" class="border border-gold text-gold font-syne text-sm tracking-widest uppercase px-6 py-2.5 hover:bg-gold hover:text-noir gold-glow transition-all duration-300 min-h-[44px] flex items-center">Reserve Now</a>
       </div>
-
-      <!-- Hamburger -->
-      <button id="hamburger" class="md:hidden text-[#f4f4f4] w-10 h-10 flex flex-col items-center justify-center gap-[5px]" aria-label="Open menu">
-        <span class="block w-6 h-[1.5px] bg-[#f4f4f4] transition-all duration-300" id="h1"></span>
-        <span class="block w-6 h-[1.5px] bg-[#f4f4f4] transition-all duration-300" id="h2"></span>
-        <span class="block w-4 h-[1.5px] bg-[#d4af37] transition-all duration-300" id="h3"></span>
+      <button id="menu-toggle" class="md:hidden text-gold text-2xl min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Toggle menu">
+        <i class="fas fa-bars" id="menu-icon"></i>
       </button>
     </div>
-
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-[#1a1a1b] border-t border-white/5 px-6 pb-6 pt-4 flex flex-col gap-4">
-      <a href="index.html" class="text-[#d4af37] font-medium syne tracking-wide">Home</a>
-      <a href="menu.html" class="text-[#808588] hover:text-[#f4f4f4] transition-colors duration-300 font-medium tracking-wide">Menu</a>
-      <a href="booking.html" class="text-[#808588] hover:text-[#f4f4f4] transition-colors duration-300 font-medium tracking-wide">Book</a>
-      <a href="booking.html" class="btn-gold px-5 py-2 rounded-full text-sm text-center">Reserve Now</a>
+    <div id="mobile-menu" class="mobile-menu max-h-0 overflow-hidden md:hidden">
+      <div class="flex flex-col gap-0 px-6 pb-6 pt-2 border-t border-gold/10">
+        <a href="index.html" class="font-syne text-gold tracking-widest uppercase text-sm py-4 border-b border-white/5">Home</a>
+        <a href="menu.html" class="font-syne text-studio/70 tracking-widest uppercase text-sm py-4 border-b border-white/5 hover:text-studio transition-colors">Menu</a>
+        <a href="booking.html" class="font-syne text-studio/70 tracking-widest uppercase text-sm py-4 hover:text-studio transition-colors">Book</a>
+        <a href="booking.html" class="mt-4 border border-gold text-gold font-syne text-sm tracking-widest uppercase px-6 py-3 text-center hover:bg-gold hover:text-noir transition-all duration-300">Reserve Now</a>
+      </div>
     </div>
   </nav>
 
-  <!-- ══════════════════════════════════════
-       HERO
-  ══════════════════════════════════════ -->
+  <!-- ═══════════════ HERO ═══════════════ -->
   <main>
-  <section class="hero-bg relative min-h-screen flex flex-col justify-center pt-16">
-    <div class="hero-grid-overlay"></div>
-    <div class="texture-overlay"></div>
+    <section class="hero-grid noise-bg relative min-h-screen flex flex-col justify-center pt-20 overflow-hidden">
+      <!-- Ambient glow blobs -->
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[140px] opacity-10" style="background: radial-gradient(circle, #d4af37, transparent 70%);"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full blur-[100px] opacity-8" style="background: radial-gradient(circle, #d4af37, transparent 70%);"></div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full">
-      <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 items-center py-24 lg:py-32">
-
-        <!-- Left: Text -->
-        <div>
-          <!-- Trust Badge -->
-          <div class="inline-flex items-center gap-2 bg-[#d4af37]/10 border border-[#d4af37]/25 rounded-full px-4 py-1.5 mb-8">
-            <span class="star text-sm">★</span>
-            <span class="text-[#d4af37] text-xs font-semibold tracking-widest uppercase">4.4 Star Rated Cafe & Studio</span>
-          </div>
-
-          <h1 class="syne text-5xl lg:text-7xl font-black text-[#f4f4f4] leading-[0.95] mb-6">
-            Rizal's first<br/>
-            <span style="color:#d4af37">ever</span> self-shoot<br/>
-            studio.
-          </h1>
-
-          <div class="gold-line mb-6"></div>
-
-          <p class="text-[#808588] text-xl lg:text-2xl font-light tracking-widest uppercase mb-10" style="letter-spacing:0.25em">
-            Coffee. Studio. Soul.
-          </p>
-
-          <p class="text-[#f4f4f4]/70 text-base leading-relaxed max-w-md mb-12">
-            A creative sanctuary in the heart of Taytay — where every frame tells your story and every sip fuels your art.
-          </p>
-
-          <div class="flex flex-wrap gap-4">
-            <a href="booking.html" class="btn-gold px-8 py-3.5 rounded-full text-sm inline-block">
-              Book Your Session &nbsp;→
-            </a>
-            <a href="menu.html" class="btn-outline px-8 py-3.5 rounded-full text-sm inline-block">
-              View Menu
-            </a>
-          </div>
-
-          <!-- Quick info strip -->
-          <div class="flex flex-wrap gap-6 mt-12 pt-10 border-t border-white/5">
-            <div class="flex items-center gap-2 text-[#808588] text-sm">
-              <i class="fa-regular fa-clock text-[#d4af37] text-xs"></i>
-              <span>Open 8AM – 12AM Daily</span>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full py-20 lg:py-28">
+        <div class="grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
+          <!-- Left: Copy -->
+          <div>
+            <div class="flex items-center gap-3 mb-8 fade-up">
+              <div class="w-8 h-px bg-gold"></div>
+              <span class="font-syne text-gold/80 tracking-[0.3em] uppercase text-xs font-600">Taytay, Rizal · Est. 2021</span>
             </div>
-            <div class="flex items-center gap-2 text-[#808588] text-sm">
-              <i class="fa-solid fa-location-dot text-[#d4af37] text-xs"></i>
-              <span>Taytay, Rizal</span>
+            <h1 class="font-syne font-800 text-studio leading-[0.92] mb-6 fade-up delay-1">
+              <span class="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl">Rizal's<br/>First Ever</span>
+              <span class="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-gold">Self-Shoot</span>
+              <span class="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl">Studio.</span>
+            </h1>
+            <p class="font-inter text-studio/55 text-lg lg:text-xl leading-relaxed mb-10 max-w-md fade-up delay-2">
+              Coffee. Studio. Soul. — A place where every frame tells your story and every sip fuels your vision.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 fade-up delay-3">
+              <a href="booking.html" class="border border-gold bg-gold/10 text-gold font-syne tracking-widest uppercase text-sm px-8 py-4 hover:bg-gold hover:text-noir gold-glow transition-all duration-300 text-center min-h-[52px] flex items-center justify-center">
+                Book a Session <i class="fas fa-arrow-right ml-3"></i>
+              </a>
+              <a href="menu.html" class="border border-studio/20 text-studio/70 font-syne tracking-widest uppercase text-sm px-8 py-4 hover:border-gold/40 hover:text-studio transition-all duration-300 text-center min-h-[52px] flex items-center justify-center">
+                View Menu
+              </a>
             </div>
-            <a href="tel:+639175770428" class="flex items-center gap-2 text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">
-              <i class="fa-solid fa-phone text-[#d4af37] text-xs"></i>
-              <span>0917 577 0428</span>
-            </a>
           </div>
-        </div>
 
-        <!-- Right: Visual Block -->
-        <div class="hidden lg:flex flex-col gap-4 items-end">
-          <div class="relative w-full max-w-sm">
-            <div class="about-img-frame rounded-2xl overflow-hidden bg-[#2a2a2c] aspect-[4/5] flex items-center justify-center">
-              <div class="text-center p-10">
-                <div class="text-8xl mb-4">📸</div>
-                <p class="syne text-[#d4af37] font-bold text-xl">Self-Shoot Studio</p>
-                <p class="text-[#808588] text-sm mt-1">Taytay, Rizal</p>
+          <!-- Right: Logo feature card -->
+          <div class="flex justify-center lg:justify-end fade-up delay-2">
+            <div class="relative">
+              <div class="absolute inset-0 rounded-2xl blur-2xl opacity-20" style="background: radial-gradient(circle at center, #d4af37, transparent 70%);"></div>
+              <div class="relative border border-gold/25 rounded-2xl p-1 bg-noir-light/60" style="backdrop-filter: blur(10px);">
+                <div class="rounded-xl overflow-hidden border border-white/5">
+                  <img src="https://i.ibb.co/wFSkxGzb/272866390-107870021808169-3941744220203550073-n.jpg" alt="Ssoluz Cafe & Studio Logo" class="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-cover" />
+                </div>
+                <div class="p-5">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="font-syne font-700 text-studio text-lg">Ssoluz Cafe & Studio</span>
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                  </div>
+                  <p class="font-inter text-studio/40 text-xs tracking-wider">Open · Taytay, Rizal</p>
+                </div>
               </div>
             </div>
-            <!-- Floating stat -->
-            <div class="absolute -bottom-6 -left-6 bg-[#d4af37] rounded-2xl px-5 py-4 shadow-2xl">
-              <p class="syne font-black text-[#1a1a1b] text-2xl leading-none">16+</p>
-              <p class="text-[#1a1a1b]/70 text-xs font-semibold mt-0.5">hours open daily</p>
-            </div>
-          </div>
-
-          <!-- Secondary mini card -->
-          <div class="bento-card rounded-xl p-4 flex items-center gap-3 w-full max-w-xs mt-8">
-            <div class="w-10 h-10 rounded-full bg-[#d4af37]/10 flex items-center justify-center flex-shrink-0">
-              <i class="fa-solid fa-paw text-[#d4af37] text-sm"></i>
-            </div>
-            <div>
-              <p class="text-[#f4f4f4] font-semibold text-sm">Pet-Friendly Space</p>
-              <p class="text-[#808588] text-xs">Diapers required &nbsp;·&nbsp; All are welcome</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Scroll hint -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40 animate-bounce">
-      <span class="text-[#808588] text-xs tracking-widest uppercase">Scroll</span>
-      <i class="fa-solid fa-chevron-down text-[#d4af37] text-xs"></i>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       ABOUT SECTION
-  ══════════════════════════════════════ -->
-  <section id="about" class="relative py-28 lg:py-36">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="grid lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-24 items-center">
-
-        <!-- Left: Visual -->
-        <div class="relative">
-          <div class="rounded-2xl overflow-hidden bg-[#2a2a2c] border border-white/5 aspect-square flex items-center justify-center">
-            <div class="text-center p-12">
-              <div class="text-9xl mb-6">☕</div>
-              <p class="syne text-[#d4af37] font-bold text-2xl">Ssoluz Cafe</p>
-              <p class="text-[#808588] text-sm mt-2 tracking-wider">& Studio</p>
-            </div>
-          </div>
-          <!-- Accent block -->
-          <div class="absolute -top-4 -right-4 w-24 h-24 rounded-xl bg-[#d4af37]/10 border border-[#d4af37]/20 flex items-center justify-center">
-            <p class="syne text-[#d4af37] font-black text-xl">4.4<br/><span class="text-xs font-medium">★★★★</span></p>
-          </div>
-        </div>
-
-        <!-- Right: Text -->
-        <div>
-          <p class="text-[#d4af37] text-xs font-semibold tracking-[0.3em] uppercase mb-4">About Ssoluz</p>
-          <div class="gold-line mb-6"></div>
-          <h2 class="syne text-4xl lg:text-5xl font-bold text-[#f4f4f4] leading-tight mb-8">
-            A place where you can<br/>
-            <em class="not-italic text-[#d4af37]">show your true self.</em>
-          </h2>
-          <p class="text-[#808588] text-base leading-relaxed mb-6">
-            Ssoluz Cafe and Studio is more than a creative space — it's a sanctuary where artists, dreamers, content creators, and coffee lovers come together. Nestled in Taytay, Rizal, we crafted a space that honors both quiet contemplation and bold self-expression.
-          </p>
-          <p class="text-[#808588] text-base leading-relaxed mb-10">
-            Whether you're shooting content, hosting a gathering, or simply savoring a well-made cup — Ssoluz is where your authentic story begins. We are proud to be Rizal's first ever self-shoot studio.
-          </p>
-
-          <!-- Stats row -->
-          <div class="grid grid-cols-3 gap-6 pt-8 border-t border-white/5">
-            <div>
-              <p class="syne text-3xl font-black text-[#d4af37]">#1</p>
-              <p class="text-[#808588] text-xs mt-1 leading-relaxed">Self-Shoot Studio<br/>in Rizal</p>
-            </div>
-            <div>
-              <p class="syne text-3xl font-black text-[#d4af37]">16h</p>
-              <p class="text-[#808588] text-xs mt-1 leading-relaxed">Daily Open<br/>8AM–12AM</p>
-            </div>
-            <div>
-              <p class="syne text-3xl font-black text-[#d4af37]">4.4★</p>
-              <p class="text-[#808588] text-xs mt-1 leading-relaxed">Rated Cafe<br/>& Studio</p>
-            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <div class="section-divider mx-10"></div>
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+        <span class="font-syne text-studio/40 text-xs tracking-widest uppercase">Scroll</span>
+        <i class="fas fa-chevron-down text-gold animate-bounce text-sm"></i>
+      </div>
+    </section>
 
-  <!-- ══════════════════════════════════════
-       PWD ADVOCACY
-  ══════════════════════════════════════ -->
-  <section class="pwd-section py-24 lg:py-32 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-5">
-      <div class="absolute top-0 right-0 w-96 h-96 bg-[#d4af37] rounded-full blur-3xl"></div>
+    <!-- ═══════════════ MARQUEE ═══════════════ -->
+    <div class="bg-gold overflow-hidden py-4 relative">
+      <div class="marquee-track flex items-center gap-0">
+        <span class="font-syne font-800 text-noir text-sm tracking-[0.2em] uppercase px-8">Coffee · Studio · Soul</span>
+        <span class="text-noir/40 mx-2">◆</span>
+        <span class="font-syne font-800 text-noir text-sm tracking-[0.2em] uppercase px-8">Rizal's First Self-Shoot Studio</span>
+        <span class="text-noir/40 mx-2">◆</span>
+        <span class="font-syne font-800 text-noir text-sm tracking-[0.2em] uppercase px-8">Pet Friendly · Wheelchair Accessible</span>
+        <span class="text-noir/40 mx-2">◆</span>
+        <span class="font-syne font-800 text-noir text-sm tracking-[0.2em] uppercase px-8">Mid-Affordable Luxury</span>
+        <span class="text-noir/40 mx-2">◆</span>
+        <span class="font-syne font-800 text-noir text-sm tracking-[0.2em] uppercase px-8">Coffee · Studio · Soul</span>
+        <span class="text-noir/40 mx-2">◆</span>
+        <span class="font-syne font-800 text-noir text-sm tracking-[0.2em] uppercase px-8">Rizal's First Self-Shoot Studio</span>
+        <span class="text-noir/40 mx-2">◆</span>
+        <span class="font-syne font-800 text-noir text-sm tracking-[0.2em] uppercase px-8">Pet Friendly · Wheelchair Accessible</span>
+        <span class="text-noir/40 mx-2">◆</span>
+        <span class="font-syne font-800 text-noir text-sm tracking-[0.2em] uppercase px-8">Mid-Affordable Luxury</span>
+        <span class="text-noir/40 mx-2">◆</span>
+      </div>
     </div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
-      <div class="max-w-3xl mx-auto text-center">
-        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#d4af37]/10 border border-[#d4af37]/20 mb-8">
-          <i class="fa-solid fa-heart text-[#d4af37] text-xl"></i>
+
+    <!-- ═══════════════ PWD ADVOCACY ═══════════════ -->
+    <section id="advocacy" class="py-24 lg:py-36 relative overflow-hidden">
+      <div class="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold/20 to-transparent"></div>
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="grid lg:grid-cols-[1fr_1.4fr] gap-16 lg:gap-24 items-center">
+          <!-- Left: Big statement -->
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-8 h-px bg-gold"></div>
+              <span class="font-syne text-gold/80 tracking-[0.3em] uppercase text-xs">Our Advocacy</span>
+            </div>
+            <h2 class="font-syne font-800 text-studio text-4xl sm:text-5xl lg:text-6xl leading-[1.0] mb-0">
+              Ability<br/>
+              <span class="text-stroke">Beyond</span><br/>
+              Limits.
+            </h2>
+            <div class="mt-10 w-24 h-1 bg-gradient-to-r from-gold to-transparent rounded-full"></div>
+          </div>
+
+          <!-- Right: Advocacy content -->
+          <div class="relative pl-8">
+            <div class="advocacy-line absolute left-0 top-0 bottom-0"></div>
+            <div class="mb-8">
+              <div class="inline-flex items-center gap-3 bg-gold/10 border border-gold/25 rounded-full px-5 py-2.5 mb-6">
+                <i class="fas fa-wheelchair text-gold"></i>
+                <span class="font-syne text-gold text-sm tracking-wider uppercase font-600">PWD Inclusive Workspace</span>
+              </div>
+              <h3 class="font-syne font-700 text-studio text-2xl lg:text-3xl leading-snug mb-5">
+                Empowering Individuals with Disabilities to Serve You with Excellence.
+              </h3>
+              <p class="font-inter text-studio/55 leading-relaxed text-base lg:text-lg mb-6">
+                At Ssoluz, inclusion isn't a policy — it's our identity. We proudly employ and uplift individuals with disabilities, creating a space where capability shines beyond condition. When you visit, you're not just having coffee — you're championing a movement.
+              </p>
+              <p class="font-inter text-studio/40 leading-relaxed text-sm">
+                Our team is trained, passionate, and ready to deliver an experience that makes every guest — and every team member — feel seen, valued, and celebrated.
+              </p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-noir-light border border-white/8 rounded-xl p-5">
+                <i class="fas fa-heart text-gold text-xl mb-3 block"></i>
+                <p class="font-syne font-600 text-studio text-sm">Inclusive Hiring</p>
+                <p class="font-inter text-studio/40 text-xs mt-1">PWD-first employment</p>
+              </div>
+              <div class="bg-noir-light border border-white/8 rounded-xl p-5">
+                <i class="fas fa-universal-access text-gold text-xl mb-3 block"></i>
+                <p class="font-syne font-600 text-studio text-sm">Fully Accessible</p>
+                <p class="font-inter text-studio/40 text-xs mt-1">Wheelchair-friendly space</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="text-[#d4af37] text-xs font-semibold tracking-[0.3em] uppercase mb-4">Our Advocacy</p>
-        <h2 class="syne text-4xl lg:text-5xl font-bold text-[#f4f4f4] leading-tight mb-8">
-          What makes us<br/>truly outstanding.
+      </div>
+    </section>
+
+    <!-- SEPARATOR -->
+    <div class="separator-gold max-w-5xl mx-auto opacity-30"></div>
+
+    <!-- ═══════════════ BENTO GRID VIBES ═══════════════ -->
+    <section id="experience" class="py-24 lg:py-36">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-px bg-gold"></div>
+              <span class="font-syne text-gold/80 tracking-[0.3em] uppercase text-xs">The Experience</span>
+            </div>
+            <h2 class="font-syne font-800 text-studio text-4xl sm:text-5xl lg:text-6xl leading-[1.05]">
+              Every Detail.<br/><span class="text-gold">Intentional.</span>
+            </h2>
+          </div>
+          <a href="booking.html" class="border border-gold/40 text-gold font-syne text-xs tracking-widest uppercase px-6 py-3 hover:bg-gold hover:text-noir transition-all duration-300 min-h-[44px] flex items-center whitespace-nowrap self-end">
+            Reserve a Spot <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[220px] gap-4 lg:gap-5">
+
+          <!-- Card 1: Pet Friendly (tall) -->
+          <div class="card-hover lg:row-span-2 bg-noir-light border border-white/8 rounded-2xl p-8 flex flex-col justify-between relative overflow-hidden group cursor-default" style="background: linear-gradient(145deg, #242425, #1a1a1b);">
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" style="background: radial-gradient(circle at 50% 0%, rgba(212,175,55,0.08), transparent 70%);"></div>
+            <div class="relative z-10">
+              <div class="w-14 h-14 rounded-xl bg-gold/10 border border-gold/25 flex items-center justify-center mb-6">
+                <i class="fas fa-paw text-gold text-2xl"></i>
+              </div>
+              <h3 class="font-syne font-700 text-studio text-2xl lg:text-3xl leading-tight mb-4">Pet<br/>Friendly<br/>Space.</h3>
+              <p class="font-inter text-studio/50 text-sm leading-relaxed">Bring your furry companions along for the session. Diapers required for indoor pets — because we love them <em>and</em> our floors equally.</p>
+            </div>
+            <div class="relative z-10 mt-6 pt-6 border-t border-white/8">
+              <span class="font-syne text-gold/60 text-xs tracking-widest uppercase">Pets Welcome · Diapers Required</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Parking -->
+          <div class="card-hover bg-noir-mid border border-white/8 rounded-2xl p-7 flex flex-col justify-between relative overflow-hidden group cursor-default">
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" style="background: radial-gradient(circle at 0% 100%, rgba(212,175,55,0.07), transparent 70%);"></div>
+            <div class="relative z-10 flex items-start justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/25 flex items-center justify-center mb-5">
+                  <i class="fas fa-car text-gold text-xl"></i>
+                </div>
+                <h3 class="font-syne font-700 text-studio text-xl leading-tight">Ample Parking</h3>
+                <p class="font-inter text-studio/50 text-xs mt-2 leading-relaxed">Spacious lot with 24/7 CCTV coverage. Park with confidence.</p>
+              </div>
+            </div>
+            <div class="relative z-10 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-green-400"></span>
+              <span class="font-inter text-studio/40 text-xs">CCTV Monitored · 24/7</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Jazz + WiFi -->
+          <div class="card-hover sm:col-span-1 bg-noir-light border border-gold/15 rounded-2xl p-7 flex flex-col justify-between relative overflow-hidden group cursor-default" style="background: linear-gradient(135deg, #242425 60%, rgba(212,175,55,0.06) 100%);">
+            <div class="relative z-10">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/25 flex items-center justify-center">
+                  <i class="fas fa-music text-gold text-xl"></i>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/25 flex items-center justify-center">
+                  <i class="fas fa-wifi text-gold text-xl"></i>
+                </div>
+              </div>
+              <h3 class="font-syne font-700 text-studio text-xl leading-tight mb-2">Jazz Vibes &<br/>Fast Wi-Fi</h3>
+              <p class="font-inter text-studio/50 text-xs leading-relaxed">Curated ambient jazz sets the mood while blazing-fast internet keeps your uploads flying.</p>
+            </div>
+            <div class="flex items-center gap-2 mt-4">
+              <i class="fas fa-signal text-gold/70 text-xs"></i>
+              <span class="font-inter text-studio/40 text-xs">High-Speed Connection</span>
+            </div>
+          </div>
+
+          <!-- Card 4: Wheelchair -->
+          <div class="card-hover bg-noir-mid border border-white/8 rounded-2xl p-7 flex flex-col justify-between relative overflow-hidden group cursor-default">
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" style="background: radial-gradient(circle at 100% 0%, rgba(212,175,55,0.06), transparent 70%);"></div>
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/25 flex items-center justify-center mb-5">
+                <i class="fas fa-wheelchair text-gold text-xl"></i>
+              </div>
+              <h3 class="font-syne font-700 text-studio text-xl leading-tight mb-2">Wheelchair Accessible</h3>
+              <p class="font-inter text-studio/50 text-xs leading-relaxed">Designed so every guest feels at home. No barriers, just beauty.</p>
+            </div>
+            <span class="font-syne text-gold/60 text-xs tracking-widest uppercase">Full Accessibility</span>
+          </div>
+
+          <!-- Card 5: Wide banner -->
+          <div class="card-hover sm:col-span-2 lg:col-span-2 bg-gold/8 border border-gold/20 rounded-2xl p-8 flex items-center gap-8 relative overflow-hidden group cursor-default" style="background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(26,26,27,0.9));">
+            <div class="w-16 h-16 rounded-2xl bg-gold flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-camera-retro text-noir text-2xl"></i>
+            </div>
+            <div>
+              <h3 class="font-syne font-700 text-studio text-xl lg:text-2xl mb-2">Self-Shoot Studio Access</h3>
+              <p class="font-inter text-studio/55 text-sm leading-relaxed">Professional lighting, curated backdrops, and a space that makes every shot editorial-worthy. No photographer needed — just your vision.</p>
+            </div>
+            <a href="booking.html" class="ml-auto flex-shrink-0 border border-gold text-gold font-syne text-xs tracking-widest uppercase px-5 py-2.5 hover:bg-gold hover:text-noir transition-all duration-300 whitespace-nowrap min-h-[44px] flex items-center">
+              Book Studio
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ QUICK INFO STRIP ═══════════════ -->
+    <section class="py-16 bg-noir-light border-y border-white/6">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center sm:text-left">
+          <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/25 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-map-marker-alt text-gold"></i>
+            </div>
+            <div>
+              <p class="font-syne font-700 text-studio text-sm mb-1">Location</p>
+              <p class="font-inter text-studio/50 text-sm">42 Rizal Ave, Taytay, 1920 Rizal</p>
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/25 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-phone text-gold"></i>
+            </div>
+            <div>
+              <p class="font-syne font-700 text-studio text-sm mb-1">Phone</p>
+              <a href="tel:09175770428" class="font-inter text-studio/50 text-sm hover:text-gold transition-colors">0917 577 0428</a>
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/25 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-envelope text-gold"></i>
+            </div>
+            <div>
+              <p class="font-syne font-700 text-studio text-sm mb-1">Email</p>
+              <a href="mailto:ssoluzstudio@gmail.com" class="font-inter text-studio/50 text-sm hover:text-gold transition-colors">ssoluzstudio@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CTA SECTION ═══════════════ -->
+    <section class="py-28 lg:py-40 relative overflow-hidden">
+      <div class="absolute inset-0 hero-grid opacity-50"></div>
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div class="w-[600px] h-[300px] rounded-full blur-[120px] opacity-10" style="background: radial-gradient(circle, #d4af37, transparent 60%);"></div>
+      </div>
+      <div class="relative z-10 max-w-4xl mx-auto px-6 lg:px-10 text-center">
+        <div class="flex items-center justify-center gap-3 mb-8">
+          <div class="w-12 h-px bg-gold"></div>
+          <span class="font-syne text-gold/70 tracking-[0.3em] uppercase text-xs">Ready to Create?</span>
+          <div class="w-12 h-px bg-gold"></div>
+        </div>
+        <h2 class="font-syne font-800 text-studio text-4xl sm:text-5xl lg:text-7xl leading-[1.0] mb-8">
+          Your Vision.<br/><span class="text-gold">Our Stage.</span>
         </h2>
-        <p class="text-[#f4f4f4]/70 text-lg leading-relaxed max-w-2xl mx-auto mb-6">
-          We provide opportunities to individuals with disabilities, empowering them to serve you with excellence.
-        </p>
-        <p class="text-[#808588] text-base leading-relaxed max-w-xl mx-auto">
-          At Ssoluz, inclusion is not a policy — it is our culture. Every cup served by our team carries the strength of resilience, and every smile is a testament to what empowerment truly looks like. When you visit us, you support a community that believes in human dignity.
-        </p>
-        <div class="flex flex-wrap gap-4 justify-center mt-10">
-          <div class="flex items-center gap-2 bg-[#d4af37]/10 border border-[#d4af37]/20 rounded-full px-4 py-2">
-            <i class="fa-solid fa-universal-access text-[#d4af37] text-sm"></i>
-            <span class="text-[#f4f4f4] text-sm font-medium">Wheelchair Accessible</span>
-          </div>
-          <div class="flex items-center gap-2 bg-[#d4af37]/10 border border-[#d4af37]/20 rounded-full px-4 py-2">
-            <i class="fa-solid fa-hands-holding-heart text-[#d4af37] text-sm"></i>
-            <span class="text-[#f4f4f4] text-sm font-medium">PWD-Inclusive Hiring</span>
-          </div>
-          <div class="flex items-center gap-2 bg-[#d4af37]/10 border border-[#d4af37]/20 rounded-full px-4 py-2">
-            <i class="fa-solid fa-star text-[#d4af37] text-sm"></i>
-            <span class="text-[#f4f4f4] text-sm font-medium">Serving with Excellence</span>
-          </div>
+        <p class="font-inter text-studio/50 text-lg mb-12 max-w-lg mx-auto">From solo portraits to intimate events — Ssoluz is the canvas your story deserves.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="booking.html" class="border border-gold bg-gold text-noir font-syne font-700 tracking-widest uppercase text-sm px-10 py-4 hover:bg-gold-light gold-glow transition-all duration-300 min-h-[52px] flex items-center justify-center">
+            Reserve Your Session
+          </a>
+          <a href="menu.html" class="border border-studio/20 text-studio/70 font-syne tracking-widest uppercase text-sm px-10 py-4 hover:border-gold/40 hover:text-studio transition-all duration-300 min-h-[52px] flex items-center justify-center">
+            See Our Menu
+          </a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <div class="section-divider mx-10"></div>
-
-  <!-- ══════════════════════════════════════
-       BENTO FEATURES
-  ══════════════════════════════════════ -->
-  <section id="features" class="py-28 lg:py-36">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="mb-16">
-        <p class="text-[#d4af37] text-xs font-semibold tracking-[0.3em] uppercase mb-4">The Experience</p>
-        <div class="gold-line mb-6"></div>
-        <h2 class="syne text-4xl lg:text-5xl font-bold text-[#f4f4f4]">Everything you need.<br/>All in one space.</h2>
-      </div>
-
-      <!-- Bento Grid -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[180px]">
-
-        <!-- 1: Hours - Large -->
-        <div class="bento-card rounded-2xl p-6 flex flex-col justify-between col-span-2 row-span-1">
-          <i class="fa-regular fa-clock text-[#d4af37] text-2xl"></i>
-          <div>
-            <p class="syne text-3xl font-black text-[#f4f4f4]">8AM – 12AM</p>
-            <p class="text-[#808588] text-sm mt-1">Open every day, all year long</p>
-          </div>
-        </div>
-
-        <!-- 2: Pet Friendly -->
-        <div class="bento-card rounded-2xl p-6 flex flex-col justify-between">
-          <i class="fa-solid fa-paw text-[#d4af37] text-2xl"></i>
-          <div>
-            <p class="syne text-xl font-bold text-[#f4f4f4]">Pet-Friendly</p>
-            <p class="text-[#808588] text-xs mt-1">Diapers required</p>
-          </div>
-        </div>
-
-        <!-- 3: Parking -->
-        <div class="bento-card rounded-2xl p-6 flex flex-col justify-between">
-          <i class="fa-solid fa-car text-[#d4af37] text-2xl"></i>
-          <div>
-            <p class="syne text-xl font-bold text-[#f4f4f4]">Ample Parking</p>
-            <p class="text-[#808588] text-xs mt-1">CCTV-secured lot</p>
-          </div>
-        </div>
-
-        <!-- 4: WiFi -->
-        <div class="bento-card rounded-2xl p-6 flex flex-col justify-between">
-          <i class="fa-solid fa-wifi text-[#d4af37] text-2xl"></i>
-          <div>
-            <p class="syne text-xl font-bold text-[#f4f4f4]">Fast Wi-Fi</p>
-            <p class="text-[#808588] text-xs mt-1">Stay connected</p>
-          </div>
-        </div>
-
-        <!-- 5: Jazz Vibe -->
-        <div class="bento-card rounded-2xl p-6 flex flex-col justify-between">
-          <i class="fa-solid fa-music text-[#d4af37] text-2xl"></i>
-          <div>
-            <p class="syne text-xl font-bold text-[#f4f4f4]">Jazz Vibe</p>
-            <p class="text-[#808588] text-xs mt-1">Curated ambience</p>
-          </div>
-        </div>
-
-        <!-- 6: Wheelchair - Large -->
-        <div class="bento-card rounded-2xl p-6 flex flex-col justify-between col-span-2">
-          <i class="fa-solid fa-wheelchair text-[#d4af37] text-2xl"></i>
-          <div>
-            <p class="syne text-2xl font-bold text-[#f4f4f4]">Wheelchair Accessible</p>
-            <p class="text-[#808588] text-sm mt-1">Designed for everyone — built with dignity</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider mx-10"></div>
-
-  <!-- ══════════════════════════════════════
-       REVIEWS
-  ══════════════════════════════════════ -->
-  <section id="reviews" class="py-28 lg:py-36">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="mb-16">
-        <p class="text-[#d4af37] text-xs font-semibold tracking-[0.3em] uppercase mb-4">What They Say</p>
-        <div class="gold-line mb-6"></div>
-        <h2 class="syne text-4xl lg:text-5xl font-bold text-[#f4f4f4]">Real stories.<br/>Real experiences.</h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <!-- Review 1 -->
-        <div class="review-card rounded-2xl p-8">
-          <div class="flex items-center gap-1 mb-4">
-            <span class="star text-sm">★★★★★</span>
-          </div>
-          <p class="text-[#f4f4f4]/80 text-sm leading-relaxed mb-6">
-            "The studio setup is genuinely impressive for a local spot. Clean, well-lit, and the staff were super accommodating. The coffee is also really good — not just an afterthought. Will definitely be back for more shoots!"
-          </p>
-          <div class="flex items-center gap-3 pt-4 border-t border-white/5">
-            <div class="w-10 h-10 rounded-full bg-[#d4af37]/20 flex items-center justify-center flex-shrink-0">
-              <span class="syne font-bold text-[#d4af37] text-sm">A</span>
-            </div>
-            <div>
-              <p class="text-[#f4f4f4] font-semibold text-sm syne">Angelo C.</p>
-              <p class="text-[#808588] text-xs">Verified Guest</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 2 -->
-        <div class="review-card rounded-2xl p-8 border-[#d4af37]/15" style="border-color: rgba(212,175,55,0.15)">
-          <div class="flex items-center gap-1 mb-4">
-            <span class="star text-sm">★★★★★</span>
-          </div>
-          <p class="text-[#f4f4f4]/80 text-sm leading-relaxed mb-6">
-            "Solid place for content creators in Rizal. Finally, a proper studio that doesn't cost an arm and a leg. The vibe is relaxed, the lighting is great, and they clearly put effort into the ambience. Highly recommend."
-          </p>
-          <div class="flex items-center gap-3 pt-4 border-t border-white/5">
-            <div class="w-10 h-10 rounded-full bg-[#d4af37]/20 flex items-center justify-center flex-shrink-0">
-              <span class="syne font-bold text-[#d4af37] text-sm">D</span>
-            </div>
-            <div>
-              <p class="text-[#f4f4f4] font-semibold text-sm syne">Don Michael</p>
-              <p class="text-[#808588] text-xs">Verified Guest</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="review-card rounded-2xl p-8">
-          <div class="flex items-center gap-1 mb-4">
-            <span class="star text-sm">★★★★☆</span>
-          </div>
-          <p class="text-[#f4f4f4]/80 text-sm leading-relaxed mb-6">
-            "Love the inclusive vibe here. The team was warm and genuine, and you can tell they truly care about their guests. The food and drinks are great value — Studio Nachos are a must! Perfect place to chill and create."
-          </p>
-          <div class="flex items-center gap-3 pt-4 border-t border-white/5">
-            <div class="w-10 h-10 rounded-full bg-[#d4af37]/20 flex items-center justify-center flex-shrink-0">
-              <span class="syne font-bold text-[#d4af37] text-sm">R</span>
-            </div>
-            <div>
-              <p class="text-[#f4f4f4] font-semibold text-sm syne">Ryann</p>
-              <p class="text-[#808588] text-xs">Verified Guest</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider mx-10"></div>
-
-  <!-- ══════════════════════════════════════
-       CTA BAND
-  ══════════════════════════════════════ -->
-  <section class="py-24 lg:py-32 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-[#d4af37]/8 to-transparent"></div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
-      <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
-        <div>
-          <h2 class="syne text-4xl lg:text-5xl font-black text-[#f4f4f4] leading-tight mb-3">
-            Ready to create?
-          </h2>
-          <p class="text-[#808588] text-lg">Reserve your studio session or event space today.</p>
-        </div>
-        <div class="flex flex-wrap gap-4 flex-shrink-0">
-          <a href="booking.html" class="btn-gold px-8 py-4 rounded-full text-sm">Book a Session →</a>
-          <a href="menu.html" class="btn-outline px-8 py-4 rounded-full text-sm">Explore Menu</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
+    </section>
   </main>
 
-  <!-- ══════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════ -->
-  <footer class="bg-[#111112] border-t border-white/5 pt-16 pb-8">
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="bg-noir-light border-t border-white/8 pt-16 pb-8">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-14">
         <!-- Brand -->
-        <div class="lg:col-span-2">
-          <p class="syne text-2xl font-black text-[#f4f4f4] mb-3">SSOLUZ<span style="color:#d4af37">.</span></p>
-          <p class="text-[#808588] text-sm leading-relaxed max-w-xs mb-6">
-            Rizal's first ever self-shoot studio. A space for coffee, creativity, and authentic self-expression.
+        <div>
+          <img src="https://i.ibb.co/wFSkxGzb/272866390-107870021808169-3941744220203550073-n.jpg" alt="Ssoluz Logo" class="h-16 w-auto object-contain mb-5" />
+          <p class="font-inter text-studio/40 text-sm leading-relaxed max-w-xs">
+            Coffee. Studio. Soul. — Rizal's first ever self-shoot studio, where creativity meets community.
           </p>
-          <div class="flex gap-4">
-            <a href="https://www.facebook.com/ssoluz.cafeandstudio" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#d4af37]/20 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-              <i class="fa-brands fa-facebook-f text-[#808588] hover:text-[#d4af37] text-sm transition-colors duration-300"></i>
-            </a>
-            <a href="https://www.instagram.com/ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#d4af37]/20 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-              <i class="fa-brands fa-instagram text-[#808588] text-sm transition-colors duration-300"></i>
-            </a>
-            <a href="https://www.tiktok.com/@ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="TikTok" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#d4af37]/20 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-              <i class="fa-brands fa-tiktok text-[#808588] text-sm transition-colors duration-300"></i>
-            </a>
-          </div>
         </div>
-
-        <!-- Quick Links -->
+        <!-- Links -->
         <div>
-          <p class="syne text-xs font-bold text-[#f4f4f4] tracking-widest uppercase mb-5">Quick Links</p>
-          <div class="flex flex-col gap-3">
-            <a href="index.html" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">Home</a>
-            <a href="menu.html" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">Menu</a>
-            <a href="booking.html" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">Book a Session</a>
-            <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">Message Us</a>
-          </div>
+          <h4 class="font-syne font-700 text-studio text-sm tracking-widest uppercase mb-6">Navigate</h4>
+          <ul class="flex flex-col gap-3">
+            <li><a href="index.html" class="font-inter text-studio/50 text-sm hover:text-gold transition-colors duration-300">Home</a></li>
+            <li><a href="menu.html" class="font-inter text-studio/50 text-sm hover:text-gold transition-colors duration-300">Menu</a></li>
+            <li><a href="booking.html" class="font-inter text-studio/50 text-sm hover:text-gold transition-colors duration-300">Book a Session</a></li>
+            <li><a href="#advocacy" class="font-inter text-studio/50 text-sm hover:text-gold transition-colors duration-300">PWD Advocacy</a></li>
+          </ul>
         </div>
-
-        <!-- Contact -->
+        <!-- Social + Info -->
         <div>
-          <p class="syne text-xs font-bold text-[#f4f4f4] tracking-widest uppercase mb-5">Contact</p>
-          <div class="flex flex-col gap-3">
-            <div>
-              <p class="text-[#d4af37] text-xs font-semibold uppercase tracking-wider mb-1">Hours</p>
-              <p class="text-[#808588] text-sm">8:00 AM – 12:00 AM</p>
-              <p class="text-[#808588] text-xs">Open Daily</p>
-            </div>
-            <a href="tel:+639175770428" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300">0917 577 0428</a>
-            <a href="mailto:ssoluzstudio@gmail.com" class="text-[#808588] text-sm hover:text-[#d4af37] transition-colors duration-300 break-all">ssoluzstudio@gmail.com</a>
-            <p class="text-[#808588] text-sm leading-relaxed">42 Rizal Ave, Taytay,<br/>1920 Rizal</p>
+          <h4 class="font-syne font-700 text-studio text-sm tracking-widest uppercase mb-6">Connect</h4>
+          <div class="flex items-center gap-4 mb-8">
+            <a href="https://www.facebook.com/ssoluz.cafeandstudio" target="_blank" rel="noopener" aria-label="Facebook" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold hover:shadow-gold transition-all duration-300">
+              <i class="fab fa-facebook-f text-base"></i>
+            </a>
+            <a href="https://www.instagram.com/ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="Instagram" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold hover:shadow-gold transition-all duration-300">
+              <i class="fab fa-instagram text-base"></i>
+            </a>
+            <a href="https://www.tiktok.com/@ssoluzcafeandstudio" target="_blank" rel="noopener" aria-label="TikTok" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold hover:shadow-gold transition-all duration-300">
+              <i class="fab fa-tiktok text-base"></i>
+            </a>
+            <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" aria-label="Messenger" class="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-studio/50 hover:border-gold hover:text-gold hover:shadow-gold transition-all duration-300">
+              <i class="fab fa-facebook-messenger text-base"></i>
+            </a>
+          </div>
+          <div class="flex flex-col gap-2">
+            <a href="tel:09175770428" class="font-inter text-studio/40 text-sm hover:text-gold transition-colors flex items-center gap-2">
+              <i class="fas fa-phone text-gold/50 text-xs"></i> 0917 577 0428
+            </a>
+            <p class="font-inter text-studio/40 text-sm flex items-start gap-2">
+              <i class="fas fa-map-marker-alt text-gold/50 text-xs mt-1"></i> 42 Rizal Ave, Taytay, 1920 Rizal
+            </p>
           </div>
         </div>
-
       </div>
-
-      <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-3">
-        <p class="text-[#808588] text-xs">© 2025 Ssoluz Cafe & Studio. All rights reserved.</p>
-        <p class="text-[#808588] text-xs">Built with <span class="text-[#d4af37]">♥</span> by Steven Designs</p>
+      <div class="separator-gold opacity-20 mb-6"></div>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="font-inter text-studio/25 text-xs">© 2024 Ssoluz Cafe & Studio. All rights reserved.</p>
+        <p class="font-syne text-gold/30 text-xs tracking-widest uppercase">Coffee · Studio · Soul</p>
       </div>
     </div>
   </footer>
 
-  <!-- ══════════════════════════════════════
-       FAB: MESSENGER
-  ══════════════════════════════════════ -->
-  <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" class="fab-messenger" aria-label="Message us on Messenger">
-    <i class="fa-brands fa-facebook-messenger text-[#1a1a1b] text-xl"></i>
+  <!-- ═══════════════ FLOATING MESSENGER FAB ═══════════════ -->
+  <a href="https://m.me/ssoluz.cafeandstudio" target="_blank" rel="noopener" aria-label="Message us on Messenger" class="fab fixed bottom-7 right-7 z-50 w-16 h-16 rounded-full bg-gold flex items-center justify-center shadow-gold">
+    <i class="fab fa-facebook-messenger text-noir text-2xl"></i>
   </a>
 
   <script>
     // Mobile menu toggle
-    const hamburger = document.getElementById('hamburger');
+    const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
-    const h1 = document.getElementById('h1');
-    const h3 = document.getElementById('h3');
-
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      h1.classList.toggle('rotate-45');
-      h1.classList.toggle('translate-y-[6.5px]');
-      h3.classList.toggle('opacity-0');
+    const menuIcon = document.getElementById('menu-icon');
+    let menuOpen = false;
+    menuToggle.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+        menuIcon.className = 'fas fa-times';
+      } else {
+        mobileMenu.style.maxHeight = '0';
+        menuIcon.className = 'fas fa-bars';
+      }
+    });
+    // Scroll-based nav shadow
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 30) { nav.style.borderBottomColor = 'rgba(212,175,55,0.2)'; }
+      else { nav.style.borderBottomColor = 'rgba(212,175,55,0.15)'; }
     });
   </script>
 </body>
