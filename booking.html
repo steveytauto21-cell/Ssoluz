@@ -66,6 +66,8 @@
     .mobile-menu-panel { transition: all 0.35s cubic-bezier(0.16,1,0.3,1); }
     .required-star { color: #d4af37; }
     label { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,244,244,0.6); display: block; margin-bottom: 8px; }
+    /* FIX: Ensure modal inner content is always clickable */
+    .modal-box a, .modal-box button { position: relative; z-index: 10; pointer-events: auto; cursor: pointer; }
   </style>
 </head>
 <body class="overflow-x-hidden bg-noir">
@@ -353,15 +355,27 @@
   </main>
 
   <!-- ═══════════════ SUCCESS MODAL ═══════════════ -->
-  <div id="success-modal" class="success-modal fixed inset-0 z-[999] bg-noir/80 backdrop-blur-md items-center justify-center px-6">
-    <div class="modal-box max-w-md w-full bg-noir-light border border-gold/30 rounded-3xl p-10 text-center" style="box-shadow: 0 0 60px rgba(212,175,55,0.25);">
+  <!--
+    FIX: Changed modal structure so the backdrop click-to-close does NOT
+    intercept clicks on links/buttons inside the modal box.
+    - Backdrop is a separate absolute div that handles closing
+    - modal-box sits on top with its own z-index, fully interactive
+  -->
+  <div id="success-modal" class="success-modal fixed inset-0 z-[999] items-center justify-center px-6" style="background: rgba(26,26,27,0.85);">
+    <!-- Backdrop: clicking this closes the modal -->
+    <div id="modal-backdrop" onclick="closeModal()" class="absolute inset-0" style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
+    <!-- Modal box: sits above backdrop, fully interactive -->
+    <div class="modal-box relative z-10 max-w-md w-full bg-noir-light border border-gold/30 rounded-3xl p-10 text-center" style="box-shadow: 0 0 60px rgba(212,175,55,0.25);">
       <div class="w-20 h-20 rounded-2xl bg-gold flex items-center justify-center mx-auto mb-6">
         <i class="fas fa-check text-noir text-3xl"></i>
       </div>
       <h3 class="font-syne font-800 text-studio text-2xl mb-3">Email Client Opened!</h3>
       <p class="font-inter text-studio/55 text-sm leading-relaxed mb-2">Your reservation request has been pre-filled. Please send the email to complete your booking.</p>
-      <p class="font-inter text-gold/70 text-xs mb-8">If your email client didn't open, email us directly at <a href="mailto:ssoluzstudio@gmail.com" class="underline hover:text-gold">ssoluzstudio@gmail.com</a></p>
-      <button onclick="closeModal()" class="w-full border border-gold text-gold font-syne tracking-widest uppercase text-sm py-4 rounded-xl hover:bg-gold hover:text-noir transition-all duration-300 min-h-[52px]">
+      <p class="font-inter text-gold/70 text-xs mb-8">
+        If your email client didn't open, email us directly at
+        <a href="mailto:ssoluzstudio@gmail.com" class="underline hover:text-gold text-gold font-semibold" style="pointer-events: auto; cursor: pointer; position: relative; z-index: 20;">ssoluzstudio@gmail.com</a>
+      </p>
+      <button onclick="closeModal()" class="w-full border border-gold text-gold font-syne tracking-widest uppercase text-sm py-4 rounded-xl hover:bg-gold hover:text-noir transition-all duration-300 min-h-[52px]" style="cursor: pointer;">
         Close
       </button>
     </div>
@@ -452,7 +466,7 @@
     const dd = String(today.getDate()).padStart(2, '0');
     dateInput.min = `${yyyy}-${mm}-${dd}`;
 
-    // ── Submit Booking (mailto) ──
+    // ── Submit Booking ──
     function submitBooking() {
       const name = document.getElementById('guest-name').value.trim();
       const phone = document.getElementById('guest-phone').value.trim();
@@ -511,21 +525,30 @@ ${name}
 ${phone}`
       );
 
+      // FIX: Use window.open() with the mailto link instead of window.location.href
+      // This is more reliable across browsers and doesn't navigate away from the page
+      const mailtoLink = `mailto:ssoluzstudio@gmail.com?subject=${subject}&body=${body}`;
+
       // Loading state
       const btn = document.getElementById('submit-btn');
       const btnLabel = document.getElementById('btn-label');
       btn.disabled = true;
       btnLabel.textContent = 'Opening email client...';
 
-      // Open mailto
-      window.location.href = `mailto:ssoluzstudio@gmail.com?subject=${subject}&body=${body}`;
+      // FIX: Use a hidden anchor click — most reliable cross-browser mailto trigger
+      const tempLink = document.createElement('a');
+      tempLink.href = mailtoLink;
+      tempLink.style.display = 'none';
+      document.body.appendChild(tempLink);
+      tempLink.click();
+      document.body.removeChild(tempLink);
 
       // Show success modal after brief delay
       setTimeout(() => {
         btn.disabled = false;
         btnLabel.textContent = 'Submit Reservation Request';
         document.getElementById('success-modal').classList.add('show');
-      }, 1200);
+      }, 800);
     }
 
     function highlightErrors(name, phone, date, time, guests) {
@@ -558,11 +581,6 @@ ${phone}`
     function closeModal() {
       document.getElementById('success-modal').classList.remove('show');
     }
-
-    // Close modal on backdrop click
-    document.getElementById('success-modal').addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
-    });
   </script>
 </body>
 </html>
